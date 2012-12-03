@@ -3,8 +3,8 @@ require.config({
     paths: {
         "game" : "game/platformer", /* asteroid game */
         "ash": "lib/ash/core", /* ash entity-based game engine */
-        "brejep": "../../js_shared/brejep", /* dictionary, fillsnfixes, keypoll, tickprovider, point */
-        "libs": "../../js_shared/lib" /* signals, require */
+        "brejep": "lib/brejep", /* dictionary, fillsnfixes, keypoll, tickprovider, point */
+        "libs": "lib/vendor" /* signals, require */
     }
 });
 
