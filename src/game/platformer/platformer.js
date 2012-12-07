@@ -7,7 +7,7 @@ define( "game/platformer",
         "game/systems/rendersystem",
         "game/systems/systempriorities",
         "game/entitycreator",
-        "ash/game",
+        "ash/engine",
         "ash/system",
         "brejep/keypoll",
         "brejep/tickprovider"
@@ -20,7 +20,7 @@ define( "game/platformer",
         RenderSystem,
         SystemPriorities,
         EntityCreator,
-        Game,
+        Engine,
         System,
         KeyPoll,
         TickProvider
@@ -32,7 +32,7 @@ define( "game/platformer",
             initialise : function( canvas ) {
                 var canvasContext = canvas.getContext( "2d" );
                 
-                this.game = Object.create( Game ).initialise();
+                this.game = Object.create( Engine ).initialise();
                 this.gameState = Object.create( GameState ).initialise();
                 
                 var keyPoll = Object.create( KeyPoll ).initialise();

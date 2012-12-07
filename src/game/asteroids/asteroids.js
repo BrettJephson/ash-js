@@ -10,7 +10,7 @@ define( "game/asteroids",
         "game/systems/rendersystem",
         "game/systems/systempriorities",
         "game/entitycreator",
-        "ash/game",
+        "ash/engine",
         "ash/system",
         "libs/signals", 
         "brejep/dictionary", 
@@ -28,7 +28,7 @@ define( "game/asteroids",
         RenderSystem,
         SystemPriorities,
         EntityCreator,
-        Game, 
+        Engine,
         System, 
         Signal, 
         Dictionary, 
@@ -47,7 +47,7 @@ define( "game/asteroids",
                 this.width = canvas.width;
                 this.height = canvas.height;
                 
-                this.game = Object.create( Game ).initialise();
+                this.game = Object.create( Engine ).initialise();
                 
                 this.gameState = Object.create( GameState ).initialise( this.width, this.height );
                 
