@@ -2,18 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e811e427-754f-48a7-8875-a2de4105fb90" name="Default" comment="">
-      <change type="MOVED" beforePath="C:\Users\bjephson\Documents\GitHub\ash-js\src\lib\ash\core\game.js" afterPath="$PROJECT_DIR$/src/lib/ash/core/engine.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/asteroids/asteroids.js" afterPath="$PROJECT_DIR$/src/game/asteroids/asteroids.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/platformer/platformer.js" afterPath="$PROJECT_DIR$/src/game/platformer/platformer.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/lib/ash/core/engine.js" afterPath="$PROJECT_DIR$/src/lib/ash/core/engine.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/lib/ash/core/entity.js" afterPath="$PROJECT_DIR$/src/lib/ash/core/entity.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/lib/ash/core/entitylist.js" afterPath="$PROJECT_DIR$/src/lib/ash/core/entitylist.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/lib/ash/core/family.js" afterPath="$PROJECT_DIR$/src/lib/ash/core/family.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/lib/ash/core/node.js" afterPath="$PROJECT_DIR$/src/lib/ash/core/node.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/lib/ash/core/nodelist.js" afterPath="$PROJECT_DIR$/src/lib/ash/core/nodelist.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/lib/ash/core/nodepool.js" afterPath="$PROJECT_DIR$/src/lib/ash/core/nodepool.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/lib/ash/core/system.js" afterPath="$PROJECT_DIR$/src/lib/ash/core/system.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/lib/ash/core/systemlist.js" afterPath="$PROJECT_DIR$/src/lib/ash/core/systemlist.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/lib/brejep/fillsnfixes.js" afterPath="$PROJECT_DIR$/src/lib/brejep/fillsnfixes.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/ash/core/.idea/workspace.xml" afterPath="$PROJECT_DIR$/test/ash/core/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/ash/core/test_entity.js" afterPath="$PROJECT_DIR$/test/ash/core/test_entity.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/ash/core/test_system.js" afterPath="$PROJECT_DIR$/test/ash/core/test_system.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/test_runner.html" afterPath="$PROJECT_DIR$/test/test_runner.html" />
     </list>
     <ignored path="ash-js.iws" />
@@ -34,46 +33,19 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="test_runner.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/test_runner.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="60" selection-start="743" selection-end="743" vertical-scroll-proportion="-4.576923">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="engine.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/lib/ash/core/engine.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="28" selection-start="1034" selection-end="1034" vertical-scroll-proportion="0.7513812">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="test_system.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/ash/core/test_system.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="0" selection-start="213" selection-end="213" vertical-scroll-proportion="0.0">
+            <state line="3" column="0" selection-start="42" selection-end="42" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="asteroids.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/asteroids.html">
+      <file leaf-file-name="engine.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/lib/ash/core/engine.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="10" selection-start="131" selection-end="131" vertical-scroll-proportion="-3.9230769">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="asteroids-app.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/asteroids-app.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="31" selection-start="695" selection-end="695" vertical-scroll-proportion="0.0">
+            <state line="78" column="25" selection-start="2885" selection-end="2885" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -82,25 +54,52 @@
       <file leaf-file-name="asteroids.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/game/asteroids/asteroids.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="49" selection-start="1388" selection-end="1388" vertical-scroll-proportion="0.0">
+            <state line="60" column="37" selection-start="1939" selection-end="1939" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="platformer.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/game/platformer/platformer.js">
+      <file leaf-file-name="systemlist.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/lib/ash/core/systemlist.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="19" selection-start="316" selection-end="316" vertical-scroll-proportion="0.0">
+            <state line="58" column="13" selection-start="2070" selection-end="2070" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test_entity.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/ash/core/test_entity.js">
+      <file leaf-file-name="test_engine.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/ash/core/test_engine.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="106" column="30" selection-start="3420" selection-end="3420" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="entity.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/lib/ash/core/entity.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="29" column="24" selection-start="1132" selection-end="1132" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_runner.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/test/test_runner.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="21" column="80" selection-start="1187" selection-end="1187" vertical-scroll-proportion="0.0661157">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="family.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/lib/ash/core/family.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="53" selection-start="601" selection-end="601" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -119,28 +118,28 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/test/ash/core/test_entity.js" />
-        <option value="$PROJECT_DIR$/test/ash/core/test_component.js" />
-        <option value="$PROJECT_DIR$/test/test_runner.html" />
-        <option value="$PROJECT_DIR$/src/lib/ash/core/node.js" />
         <option value="$PROJECT_DIR$/src/lib/ash/core/nodelist.js" />
         <option value="$PROJECT_DIR$/src/lib/ash/core/nodepool.js" />
-        <option value="$PROJECT_DIR$/src/lib/ash/core/family.js" />
-        <option value="$PROJECT_DIR$/src/lib/ash/core/entitylist.js" />
-        <option value="$PROJECT_DIR$/src/lib/ash/core/entity.js" />
-        <option value="$PROJECT_DIR$/src/lib/ash/core/system.js" />
-        <option value="$PROJECT_DIR$/src/lib/ash/core/systemlist.js" />
-        <option value="$PROJECT_DIR$/src/lib/ash/core/engine.js" />
-        <option value="$PROJECT_DIR$/test/ash/core/test_system.js" />
         <option value="$PROJECT_DIR$/src/game/asteroids/asteroids.js" />
         <option value="$PROJECT_DIR$/src/game/platformer/platformer.js" />
+        <option value="$PROJECT_DIR$/src/lib/brejep/dictionary.js" />
+        <option value="$PROJECT_DIR$/src/lib/ash/core/entity.js" />
+        <option value="$PROJECT_DIR$/src/lib/ash/core/entitylist.js" />
+        <option value="$PROJECT_DIR$/src/lib/brejep/fillsnfixes.js" />
+        <option value="$PROJECT_DIR$/test/ash/core/test_entity.js" />
+        <option value="$PROJECT_DIR$/test/ash/core/test_system.js" />
+        <option value="$PROJECT_DIR$/src/lib/ash/core/system.js" />
+        <option value="$PROJECT_DIR$/src/lib/ash/core/systemlist.js" />
+        <option value="$PROJECT_DIR$/src/lib/ash/core/family.js" />
+        <option value="$PROJECT_DIR$/test/test_runner.html" />
+        <option value="$PROJECT_DIR$/src/lib/ash/core/engine.js" />
+        <option value="$PROJECT_DIR$/test/ash/core/test_engine.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1342" />
-    <option name="y" value="252" />
-    <option name="width" value="1425" />
+    <option name="x" value="420" />
+    <option name="width" value="946" />
     <option name="height" value="728" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -216,24 +215,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ash-js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ash-js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="ash" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -271,10 +252,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -343,8 +320,26 @@
               <option name="myItemId" value="game" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="platformer" />
+              <option name="myItemId" value="ash-js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ash-js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="game" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="asteroids" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -367,6 +362,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="asteroids" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="systems" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -453,8 +452,12 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="options.lastSelected" value="reference.settings.ide.settings.web.browsers" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Dev/vhosts/qwirkle_dev" />
+    <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="PublishConfig">
     <servers>
@@ -485,6 +488,24 @@
     <list size="0" />
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false">
+    <option name="USER" value="" />
+    <option name="PASSWORD" value="" />
+    <option name="mySSHConnectionTimeout" value="30000" />
+    <option name="mySSHReadTimeout" value="30000" />
+    <option name="LAST_MERGED_REVISION" />
+    <option name="MERGE_DRY_RUN" value="false" />
+    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
+    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
+    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
+    <option name="DETECT_NESTED_COPIES" value="true" />
+    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
+    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
+    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
+    <option name="FORCE_UPDATE" value="false" />
+    <option name="IGNORE_EXTERNALS" value="false" />
+    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="e811e427-754f-48a7-8875-a2de4105fb90" name="Default" comment="" />
@@ -494,14 +515,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1342" y="252" width="1425" height="728" extended-state="0" />
-    <editor active="true" />
+    <frame x="420" y="0" width="946" height="728" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23404256" sideWeight="0.9974227" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.260181" sideWeight="0.95719177" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
@@ -510,7 +531,7 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22429906" sideWeight="0.99448735" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -569,114 +590,98 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/lib/ash/core/systemlist.js">
+    <entry file="file://$PROJECT_DIR$/src/game/asteroids/systems/bulletagesystem.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="34" selection-start="93" selection-end="93" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/asteroids/systems/systempriorities.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="7" selection-start="146" selection-end="146" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lib/ash/core/entitylist.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="27" selection-start="418" selection-end="428" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/asteroids/systems/movementsystem.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="16" selection-start="1733" selection-end="1733" vertical-scroll-proportion="-0.016494846" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lib/brejep/dictionary.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="13" selection-start="835" selection-end="835" vertical-scroll-proportion="0.031539887" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/ash/core/test_entity.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="135" column="7" selection-start="3854" selection-end="3854" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/lib/ash/core/system.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="0" selection-start="828" selection-end="832" vertical-scroll-proportion="0.8175313">
-          <folding />
-        </state>
+        <state line="32" column="44" selection-start="1001" selection-end="1001" vertical-scroll-proportion="0.84794277" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/lib/ash/core/nodepool.js">
+    <entry file="file://$PROJECT_DIR$/src/lib/brejep/fillsnfixes.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="17" selection-start="483" selection-end="483" vertical-scroll-proportion="0.45617172">
-          <folding />
-        </state>
+        <state line="172" column="12" selection-start="5422" selection-end="5422" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/lib/ash/core/nodelist.js">
+    <entry file="file://$PROJECT_DIR$/src/lib/ash/core/systemlist.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="485" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/lib/ash/core/node.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="4" selection-start="457" selection-end="470" vertical-scroll-proportion="0.45617172">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/lib/ash/core/family.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="17" selection-start="621" selection-end="621" vertical-scroll-proportion="0.45617172">
+        <state line="58" column="13" selection-start="2070" selection-end="2070" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/lib/ash/core/entity.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="0" selection-start="2927" selection-end="2931" vertical-scroll-proportion="0.9391771">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/lib/ash/core/entitylist.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="17" selection-start="488" selection-end="488" vertical-scroll-proportion="0.45617172">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/test_runner.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="60" selection-start="743" selection-end="743" vertical-scroll-proportion="-4.576923">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/ash/core/test_entity.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="29" column="24" selection-start="1132" selection-end="1132" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/ash/core/test_system.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="213" selection-end="213" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/asteroids.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="10" selection-start="131" selection-end="131" vertical-scroll-proportion="-3.9230769">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/asteroids-app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="31" selection-start="695" selection-end="695" vertical-scroll-proportion="0.0">
+        <state line="3" column="0" selection-start="42" selection-end="42" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/game/asteroids/asteroids.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="49" selection-start="1388" selection-end="1388" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/platformer/platformer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="19" selection-start="316" selection-end="316" vertical-scroll-proportion="0.0">
+        <state line="60" column="37" selection-start="1939" selection-end="1939" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/lib/ash/core/engine.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="28" selection-start="1034" selection-end="1034" vertical-scroll-proportion="0.7513812">
+        <state line="78" column="25" selection-start="2885" selection-end="2885" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/ash/core/test_engine.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="106" column="30" selection-start="3420" selection-end="3420" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/test_runner.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="80" selection-start="1187" selection-end="1187" vertical-scroll-proportion="0.0661157">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lib/ash/core/family.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="53" selection-start="601" selection-end="601" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
