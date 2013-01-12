@@ -14,21 +14,24 @@
     }
 } ( this, function() {
     "use strict";
-    return {
-        previous : null, /* System */
-        next : null, /* System */
-        priority : 0,
-        addToGame : function( game ) {
-
-        },
-        removeFromGame : function( game ) {
-
-        },
-        update : function( time ) {
-
-        },
-        is : function( type ) {
-            return this._type === type;
-        }
+    function System() {}
+    System.prototype.previous = null; /* System */
+    System.prototype.next = null; /* System */
+    System.prototype.priority = 0;
+    System.prototype.initialise = function() {
+        return this;
     };
+    System.prototype.addToEngine = function( engine ) {
+		/* Left deliberately blank */
+	};
+    System.prototype.removeFromEngine = function( engine ) {
+		/* Left deliberately blank */
+	};
+    System.prototype.update = function( time ) {
+		/* Left deliberately blank */
+	};
+    System.prototype.is = function( type ) {
+        return type.prototype.isPrototypeOf( this );
+    };
+    return System;
 }));

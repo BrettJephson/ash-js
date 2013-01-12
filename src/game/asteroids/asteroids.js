@@ -35,84 +35,65 @@ define( "game/asteroids",
         TickProvider,
         KeyPoll
     ) {
-        return {
-            width : 0,
-            height : 0,
-            game : null,
-            gameState : null,
-            tickProvider : null,
-            initialise : function( canvas ) {
-                var canvasContext = canvas.getContext( "2d" );
-                
-                this.width = canvas.width;
-                this.height = canvas.height;
-                
-                this.game = Object.create( Engine ).initialise();
-                
-                this.gameState = Object.create( GameState ).initialise( this.width, this.height );
-                
-                var keyPoll = Object.create( KeyPoll ).initialise();
-                var creator = Object.create( EntityCreator ).initialise( this.game, canvasContext );
-                
-                this.game.addSystem( 
-                    Object.extend(
-                        Object.create( System ), 
-                        Object.create( GameManager ) 
-                    ).initialise( this.gameState, creator ),
-                    SystemPriorities.preUpdate 
-                );
-                this.game.addSystem( 
-                    Object.extend(
-                        Object.create( System ),
-                        Object.create( MotionControlSystem ) 
-                    ).initialise( keyPoll ),
-                    SystemPriorities.update
-                );
-                this.game.addSystem(
-                    Object.extend( 
-                        Object.create( System ),
-                        Object.create( GunControlSystem )
-                    ).initialise( keyPoll, creator ),
-                    SystemPriorities.update
-                );
-                this.game.addSystem( 
-                    Object.extend(
-                        Object.create( System ),
-                        Object.create( BulletAgeSystem )
-                    ).initialise( creator ),
-                    SystemPriorities.update
-                );
-                this.game.addSystem(
-                    Object.extend(
-                        Object.create( System ),
-                        Object.create( MovementSystem )
-                    ).initialise( this.gameState ),
-                    SystemPriorities.move
-                );
-                this.game.addSystem( 
-                    Object.extend(
-                        Object.create( System ),
-                        Object.create( CollisionSystem )
-                    ).initialise( creator ),
-                    SystemPriorities.resolveCollisions
-                );
-                this.game.addSystem(
-                    Object.extend(
-                        Object.create( System ),
-                        Object.create( RenderSystem )
-                    ).initialise( canvasContext ),
-                    SystemPriorities.render
-                );
-                this.tickProvider = Object.create( TickProvider );
-            },
-            start : function() {
-                this.gameState.level = 0;
-                this.gameState.lives = 3;
-                this.gameState.points = 0;
-                
-                this.tickProvider.add( this.game.update, this.game );
-                this.tickProvider.start();
-            }
-        };
-    }
+		function Asteroids() {}
+		var api = Asteroids.prototype;
+		
+		api.width = 0;
+		api.height = 0;
+		api.engine = null;
+		api.gameState = null;
+		api.tickProvider = null;
+		api.initialise = function( canvas ) {
+			var canvasContext = canvas.getContext( "2d" );
+			
+			this.width = canvas.width;
+			this.height = canvas.height;
+			
+			this.engine = new Engine();
+			
+			this.gameState = new GameState( this.width, this.height );
+			
+			var keyPoll = new KeyPoll();
+			var creator = new EntityCreator( this.engine, canvasContext );
+			
+			this.engine.addSystem( 
+				new GameManager( this.gameState, creator ),
+				SystemPriorities.preUpdate 
+			);
+			this.engine.addSystem( 
+				new MotionControlSystem( keyPoll ),
+				SystemPriorities.update
+			);
+			this.engine.addSystem(
+				new GunControlSystem( keyPoll, creator ),
+				SystemPriorities.update
+			);
+			this.engine.addSystem( 
+				new BulletAgeSystem( creator),
+				SystemPriorities.update
+			);
+			this.engine.addSystem(
+				new MovementSystem( this.gameState ),
+				SystemPriorities.move
+			);
+			this.engine.addSystem( 
+				new CollisionSystem( creator ),
+				SystemPriorities.resolveCollisions
+			);
+			this.engine.addSystem(
+				new RenderSystem( canvasContext ),
+				SystemPriorities.render
+			);
+			this.tickProvider = new TickProvider();
+		};
+		api.start = function() {
+			this.gameState.level = 0;
+			this.gameState.lives = 3;
+			this.gameState.points = 0;
+			
+			this.tickProvider.add( this.engine.update, this.engine );
+			this.tickProvider.start();
+		};
+		return Asteroids;
+	}
 );

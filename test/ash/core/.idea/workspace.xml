@@ -23,7 +23,7 @@
       <file leaf-file-name="test_entity.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test_entity.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="138" column="44" selection-start="4515" selection-end="4515" vertical-scroll-proportion="0.0">
+            <state line="135" column="44" selection-start="3891" selection-end="3891" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -41,7 +41,7 @@
       <file leaf-file-name="test_runner.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../../test_runner.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="35" selection-start="1457" selection-end="1457" vertical-scroll-proportion="0.58981234">
+            <state line="25" column="35" selection-start="1470" selection-end="1470" vertical-scroll-proportion="0.69527143">
               <folding />
             </state>
           </provider>
@@ -69,10 +69,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="x" value="2148" />
+    <option name="y" value="31" />
+    <option name="width" value="1072" />
+    <option name="height" value="1016" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -184,17 +184,17 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="2148" y="31" width="1072" height="1016" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19015151" sideWeight="0.72602737" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1940594" sideWeight="0.7266355" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2739726" sideWeight="0.55683357" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27336448" sideWeight="0.55683357" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -328,7 +328,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test_entity.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="138" column="44" selection-start="4515" selection-end="4515" vertical-scroll-proportion="0.0">
+        <state line="135" column="44" selection-start="3891" selection-end="3891" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -342,7 +342,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../../test_runner.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="35" selection-start="1457" selection-end="1457" vertical-scroll-proportion="0.58981234">
+        <state line="25" column="35" selection-start="1470" selection-end="1470" vertical-scroll-proportion="0.69527143">
           <folding />
         </state>
       </provider>

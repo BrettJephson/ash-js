@@ -9,12 +9,14 @@
             };
         }
     }
-    
+
     function fixObjectExtend() {
         if( typeof Object.extend !== "function" ) {
             Object.extend = function( destination, source ) {
                 for (var property in source) {
-                    destination[property] = source[property];
+                    if(!destination.hasOwnProperty(property) && source.hasOwnProperty(property) ) {
+                        destination[property] = source[property];
+                    }
                 }
                 return destination;
             }
@@ -140,14 +142,37 @@
         };
     }
 
+    function addTestHelpers() {
+        function hasItems( testArray, items ) {
+            var testCount = items.length;
+            for( var i = 0; i<testArray.length; ++i ){
+                for( var j = 0; j<items.length; ++j ) {
+                    if( testArray[i] == items[j] ) {
+                        testCount--;
+                    }
+                }
+            }
+            return testCount === 0;
+        }
+        window['hasItems'] = hasItems;
+    }
+
+    global.TEST_ENV = 0;
+    global.STAGE_ENV = 1;
+    global.LIVE_ENV = 2;
+
     var fillsnfixes = {
         VERSION : '0.1.0',
-        initialise : function( ) {
+        initialise : function(env) {
             fixObjectCreate();
             fixObjectExtend();
             fixObjectDeepExtend();
             fixRequestAnimationFrame();
             addKeyboardCodeEnum();
+            if(env == TEST_ENV )
+            {
+                addTestHelpers();
+            }
         }
     };
     

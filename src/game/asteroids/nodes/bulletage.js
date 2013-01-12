@@ -1,11 +1,11 @@
 define( "game/nodes/bulletage",
     [ "game/components/bullet" ],
     function( Bullet ) {
-        return {
-            bullet : null,
-            types : {
-                bullet : Bullet
-            }
-        };
+		function BulletAge() {}
+		BulletAge.prototype.bullet = null;
+		BulletAge.prototype.types = {
+			bullet : Bullet
+		};
+		return BulletAge;
     }
 );

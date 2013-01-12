@@ -24,7 +24,7 @@ require( ["brejep/fillsnfixes", "game/platformer"],
             var canvasElem = createCanvas();
             document.getElementById( "game_wrapper" ).appendChild( canvasElem );
             
-            var platformer = Object.create(Platformer);
+            var platformer = new Platformer();
             platformer.initialise( canvasElem );
             platformer.start();
         }

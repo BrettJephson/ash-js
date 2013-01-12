@@ -1,6 +1,7 @@
 define( "game/entitycreator",
     [
         "ash/entity",
+		"game/components/player",
         "game/components/position",
         "game/components/motion",
         "game/components/motioncontrols",
@@ -9,32 +10,37 @@ define( "game/entitycreator",
     ],
     function( 
         Entity,
+		Player,
         Position,
         Motion, 
         MotionControls,
         Display, 
         PlayerView 
     ) {
-        return {
-            game : null,
-            graphics : null,
-            initialise : function( game, graphics ) {
-                this.game = game;
-                this.graphics = graphics;
-                return this;
-            },
-            destroyEntity : function( entity ) {
-                this.game.removeEntity( entity );
-            },
-            createPlayer : function() {
-                var player = Object.create( Entity ).initialise()
-                    .add( Object.create( Position ).initialise( 400, 300 ), Position )
-                    .add( Object.create( Motion ).initialise( 0, 0, 15 ), Motion )
-                    .add( Object.create( MotionControls ).initialise( Keyboard.LEFT, Keyboard.RIGHT, 100 ), MotionControls )
-                    .add( Object.create( Display ).initialise( Object.create( PlayerView ).initialise( this.graphics ) ), Display );
-                this.game.addEntity( player );
-                return player;
-            }
-        };
+		function EntityCreator( game, graphics ) {
+			this.initialise( game, graphics );
+		}
+		var api = EntityCreator.prototype;
+		api.game = null;
+		api.graphics = null;
+		api.initialise = function( game, graphics ) {
+			this.game = game;
+			this.graphics = graphics;
+			return this;
+		};
+		api.destroyEntity = function( entity ) {
+			this.game.removeEntity( entity );
+		};
+		api.createPlayer = function() {
+			var player = new Entity()
+				.add( new Player() )
+				.add( new Position( 400, 300 ) )
+				.add( new Motion( 0, 0, 15 ) )
+				.add( new MotionControls( Keyboard.LEFT, Keyboard.RIGHT, 100 ) )
+				.add( new Display( new PlayerView( this.graphics ) ) );
+			this.game.addEntity( player );
+			return player;
+		};
+        return EntityCreator;
     }
 );

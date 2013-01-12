@@ -29,55 +29,60 @@ define( "game/entitycreator",
         SpaceshipView,
         BulletView
     ) {
-        return {
-            game : null,
-            graphics : null,
-            initialise : function( game, graphics ) {
-                this.game = game;
-                this.graphics = graphics;
-                return this;
-            },
-            destroyEntity : function( entity ) {
-                this.game.removeEntity( entity );
-            },
-            createAsteroid : function( radius, x, y ) {
-                var asteroid = Object.create( Entity ).initialise()
-                    .add( Object.create( Asteroid ).initialise(), Asteroid )
-                    .add( Object.create( Position ).initialise( x, y, 0, radius ), Position )
-                    .add( Object.create( Motion ).initialise(
-                        ( Math.random() - 0.5 ) * 4 * ( 50 - radius ), 
-                        ( Math.random() - 0.5 ) * 4 * ( 50 - radius ), 
-                        Math.random() * 2 - 1,
-                        0 ), Motion )
-                    .add( Object.create( Display ).initialise( Object.create( AsteroidView ).initialise( radius, this.graphics ) ), Display );
-                this.game.addEntity( asteroid );
-                return asteroid;
-            },
-            createSpaceship : function() {
-                var spaceship = Object.create( Entity ).initialise()
-                    .add( Object.create( Spaceship ).initialise(), Spaceship )
-                    .add( Object.create( Position ).initialise( 400, 300, 0, 6 ), Position )
-                    .add( Object.create( Motion ).initialise( 0, 0, 0, 15 ), Motion )
-                    .add( Object.create( MotionControls ).initialise( Keyboard.LEFT, Keyboard.RIGHT, Keyboard.UP, 100, 3 ), MotionControls )
-                    .add( Object.create( Gun ).initialise( 8, 0, 0.3, 2 ), Gun )
-                    .add( Object.create( GunControls ).initialise( Keyboard.Z ), GunControls )
-                    .add( Object.create( Display ).initialise( Object.create( SpaceshipView ).initialise( this.graphics ) ), Display );
-                this.game.addEntity( spaceship );
-                return spaceship;
-            },
-            createUserBullet : function( gun, parentPosition ) {
-                var cos = Math.cos( parentPosition.rotation );
-                var sin = Math.sin( parentPosition.rotation );
-                var bullet = Object.create( Entity ).initialise()
-                    .add( Object.create( Bullet ).initialise( gun.bulletLifetime ), Bullet )
-                    .add( Object.create( Position ).initialise( 
-                        cos * gun.offsetFromParent.x - sin * gun.offsetFromParent.y + parentPosition.position.x,
-                        sin * gun.offsetFromParent.x + cos * gun.offsetFromParent.y + parentPosition.position.y, 0, 0 ), Position )
-                    .add( Object.create( Motion ).initialise( cos * 150, sin * 150, 0, 0 ), Motion )
-                    .add( Object.create( Display ).initialise( Object.create( BulletView ).initialise( this.graphics ) ), Display );
-                this.game.addEntity( bullet );
-                return bullet;
-            }
+		function EntityCreator( game, graphics ) {
+			this.initialise( game, graphics );
+		}
+		EntityCreator.prototype.game = null;
+		EntityCreator.prototype.graphics = null;
+		EntityCreator.prototype.initialise = function( game, graphics ) {
+			this.game = game;
+			this.graphics = graphics;
+			return this;
+		};
+		EntityCreator.prototype.destroyEntity = function( entity ) {
+			this.game.removeEntity( entity );
+		};
+		EntityCreator.prototype.createAsteroid = function( radius, x, y ) {
+			var asteroid = new Entity()
+				.add( new Asteroid() )
+				.add( new Position( x, y, 0, radius ) )
+				.add( 
+					new Motion(
+						( Math.random() - 0.5 ) * 4 * ( 50 - radius ), 
+						( Math.random() - 0.5 ) * 4 * ( 50 - radius ), 
+						Math.random() * 2 - 1,
+						0
+					) 
+				)
+				.add( new Display( new AsteroidView( radius, this.graphics ) ) );
+			this.game.addEntity( asteroid );
+			return asteroid;
+		};
+		EntityCreator.prototype.createSpaceship = function() {
+			var spaceship = new Entity()
+				.add( new Spaceship() )
+				.add( new Position( 400, 300, 1, 6 ) )
+				.add( new Motion( 0, 0, 0, 15 ) )
+				.add( new MotionControls( Keyboard.LEFT, Keyboard.RIGHT, Keyboard.UP, 100, 3 ) )
+				.add( new Gun( 8, 0, 0.3, 2 ) )
+				.add( new GunControls( Keyboard.Z ) )
+				.add( new Display( new SpaceshipView( this.graphics ) ) );
+			this.game.addEntity( spaceship );
+			return spaceship;
+		};
+		EntityCreator.prototype.createUserBullet = function( gun, parentPosition ) {
+			var cos = Math.cos( parentPosition.rotation );
+			var sin = Math.sin( parentPosition.rotation );
+			var bullet = new Entity()
+				.add( new Bullet( gun.bulletLifetime ) )
+				.add( new Position( 
+					cos * gun.offsetFromParent.x - sin * gun.offsetFromParent.y + parentPosition.position.x,
+					sin * gun.offsetFromParent.x + cos * gun.offsetFromParent.y + parentPosition.position.y, 0, 0 ) )
+				.add( new Motion( cos * 150, sin * 150, 0, 0 ) )
+				.add( new Display( new BulletView( this.graphics ) ) );
+			this.game.addEntity( bullet );
+			return bullet;
         };
+        return EntityCreator;
     }
 );

@@ -16,7 +16,6 @@ require( ["brejep/fillsnfixes", "game/asteroids"],
             CANVAS_HEIGHT = 600;
             
         // Game initialisation
-        
         function initialise() {
             // some polyfills and additions to base javascript classes
             Fixes.initialise();
@@ -24,7 +23,7 @@ require( ["brejep/fillsnfixes", "game/asteroids"],
             var canvasElem = createCanvas();
             document.getElementById( "game_wrapper" ).appendChild( canvasElem );
             
-            var asteroids = Object.create(Asteroids);
+            var asteroids = new Asteroids();
             asteroids.initialise( canvasElem );
             asteroids.start();
         }

@@ -1,19 +1,14 @@
 define( "game/components/gun",
     [ "brejep/point" ],
     function( Point ) {
-        return {
-            id : "gun",
-            shooting : false,
-            offsetFromParent : null,
-            timeSinceLastShot : 0,
-            minimumShotInterval : 0,
-            bulletLifetime : 0,
-            initialise : function( offsetX, offsetY, minimumShotInterval, bulletLifetime ) {
-                this.offsetFromParent = Object.create( Point ).initialise( offsetX, offsetY );
-                this.minimumShotInterval = minimumShotInterval;
-                this.bulletLifetime = bulletLifetime;
-                return this;
-            }
-        }
+		function Gun( offsetX, offsetY, minimumShotInterval, bulletLifetime ) {
+			this.shooting = false;
+			this.offsetFromParent = null;
+			this.timeSinceLastShot = 0;
+			this.offsetFromParent = new Point( offsetX, offsetY );
+			this.minimumShotInterval = minimumShotInterval;
+			this.bulletLifetime = bulletLifetime;
+		}
+        return Gun;
     }
 );

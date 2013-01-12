@@ -7,36 +7,54 @@
     <script type="text/javascript" src="lib/qunit.js"></script>
     <!-- Ash-js dependencies -->
     <script type="text/javascript" src="../src/lib/brejep/fillsnfixes.js"></script>
+	<script type="text/javascript" src="../src/lib/brejep/point.js"></script>
     <script type="text/javascript" src="../src/lib/vendor/signals.js"></script>
     <script type="text/javascript" src="../src/lib/brejep/dictionary.js"></script>
     <script type="text/javascript">
-        this['fillsnfixes'].initialise();
-        this['Dictionary'] = this['dictionary'];
+        this['fillsnfixes'].initialise(this.TEST_ENV);
+        this['Dictionary'] = this['brejep']['dictionary'];
+		this['Point'] = this['brejep']['point'];
     </script>
     <!-- Ash-js core -->
-    <script type="text/javascript" src="../src/lib/ash/core/engine.js"></script>
     <script type="text/javascript" src="../src/lib/ash/core/entity.js"></script>
     <script type="text/javascript" src="../src/lib/ash/core/entitylist.js"></script>
-    <script type="text/javascript" src="../src/lib/ash/core/family.js"></script>
     <script type="text/javascript" src="../src/lib/ash/core/node.js"></script>
     <script type="text/javascript" src="../src/lib/ash/core/nodelist.js"></script>
     <script type="text/javascript" src="../src/lib/ash/core/nodepool.js"></script>
+    <script type="text/javascript" src="../src/lib/ash/core/family.js"></script>
     <script type="text/javascript" src="../src/lib/ash/core/system.js"></script>
     <script type="text/javascript" src="../src/lib/ash/core/systemlist.js"></script>
+    <script type="text/javascript" src="../src/lib/ash/core/engine.js"></script>
     <script type="text/javascript">
         this['Entity'] = this['ash']['entity'];
+        this['EntityList'] = this['ash']['entitylist'];
+		this['Node'] = this['ash']['node'];
+		this['NodeList'] = this['ash']['nodelist'];
+		this['NodePool'] = this['ash']['nodepool'];
+        this['Family'] = this['ash']['family'];
+        this['System'] = this['ash']['system'];
+		this['SystemList'] = this['ash']['systemlist'];
         this['Engine'] = this['ash']['engine'];
     </script>
     <!-- Ash-js tests -->
+    <script type="text/javascript" src="../test/ash/core/test_engine.js"></script>
     <script type="text/javascript" src="../test/ash/core/test_entity.js"></script>
     <script type="text/javascript" src="../test/ash/core/test_system.js"></script>
+	<script type="text/javascript" src="../test/ash/core/test_nodelist.js"></script>
 </head>
 <body>
-    <h1 id="qunit-header">QUnit Test Suite</h1>
+    <h1 id="qunit-header">Ash-js Test Suite</h1>
     <h2 id="qunit-banner"></h2>
     <div id="qunit-testrunner-toolbar"></div>
     <h2 id="qunit-userAgent"></h2>
     <ol id="qunit-tests"></ol>
     <div id="qunit-fixture">test markup</div>
+	<ul>
+		<li><a href="./test_runner.html">All tests</a></li>
+		<li><a href="./test_runner.html?filter=Test Engine">Module: Test Engine</a></li>
+		<li><a href="./test_runner.html?filter=Test Entities">Module: Test Entities</a></li>
+		<li><a href="./test_runner.html?filter=Test System">Module: Test System</a></li>
+		<li><a href="./test_runner.html?filter=Test Nodelist">Module: Test Nodelist</a></li>
+	</ul>
 </body>
 </html>

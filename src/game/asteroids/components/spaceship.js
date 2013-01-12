@@ -1,11 +1,7 @@
 define( "game/components/spaceship",
     [],
     function() {
-        return {
-            id : "spaceship",
-            initialise : function() {
-                return this;
-            }
-        }
+		function Spaceship() {}
+        return Spaceship;
     }
 );

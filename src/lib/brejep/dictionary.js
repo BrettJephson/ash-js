@@ -1,88 +1,93 @@
-(function(global) {
-    var dictionary = {
-        VERSION : "0.1.0",
-        keys : null,
-        values : null,
-        initialise : function() {
-            this.keys = [];
-            this.values = [];
-            return this;
-        },
-        add : function( key, value ) {
-            var keyIndex = this.getIndex( key );
-            if( keyIndex >= 0 ) {
-                this.values[keyIndex] = value;
-            } else {
-                this.keys.push( key );
-                this.values.push( value );
-            }
-        },
-        remove : function( key ) {
-            var keyIndex = this.getIndex( key );
-            if( keyIndex >= 0 ) {
-                this.keys.splice( keyIndex, 1 );
-                this.values.splice( keyIndex, 1 );
-            } else {
-                throw "Key does not exist";
-            }
-        },
-        retrieve : function( key ) {
-            var value = null;
-            var keyIndex = this.getIndex( key );
-            if( keyIndex >= 0 ) {
-                value = this.values[ keyIndex ];
-            }
-            return value;
-        },
-        getIndex : function( testKey ) {
-            var i = 0,
-                len = this.keys.length,
-                key;
-            for( ; i<len; ++i ){
-                key = this.keys[i];
-                if( key == testKey ) {
-                    return i;
-                }
-            }
-            return -1;
-        },
-        has : function( testKey ) {
-            var i = 0,
-                len = this.keys.length,
-                key;
-            for( ; i<len; ++i ){
-                key = this.keys[i];
-                if( key == testKey ) {
-                    return true;
-                }
-            }
-            return false;
-        },
-        forEach : function( action ) {
-            var i = 0,
-                len = this.keys.length,
-                key, 
-                value;
-            
-            for( ; i<len; ++i ) {
-                key = this.keys[i];
-                value = this.values[i];
-                var breakHere = action( key, value );
-                if( breakHere == "return" ) {
-                    return false;
-                }
-            }
-            return true;
+(function( root, factory ) {
+    // We want the object to work with or without AMD
+    if( typeof define === 'function' && define.amd ) {
+        define('brejep/dictionary', factory );
+    } else {
+        // If not using AMD, references to dependencies must be available on the root object
+        if( typeof root.brejep === 'undefined') {
+            root.brejep = {};
         }
-    };
-    
-    //exports to multiple environments
-    if(typeof define === 'function' && define.amd){ //AMD
-        define( "brejep/dictionary", dictionary );
-    } else if (typeof module !== 'undefined' && module.exports){ //node
-        module.exports = dictionary;
-    } else { //browser
-        //use string because of Google closure compiler ADVANCED_MODE
-        global['dictionary'] = dictionary;
+        root.brejep.dictionary = factory();
     }
-}(this));
+} ( this, function() {
+    "use strict";
+	function Dictionary() {
+		this.initialise();
+	}
+	var api = Dictionary.prototype;
+	api.VERSION = "0.1.0";
+	api.keys = null;
+    api.values = null;
+	api.initialise = function() {
+		this.keys = [];
+		this.values = [];
+		return this;
+	};
+	api.add = function( key, value ) {
+		var keyIndex = this.getIndex( key );
+		if( keyIndex >= 0 ) {
+			this.values[keyIndex] = value;
+		} else {
+			this.keys.push( key );
+			this.values.push( value );
+		}
+	};
+	api.remove = function( key ) {
+		var keyIndex = this.getIndex( key );
+		if( keyIndex >= 0 ) {
+			this.keys.splice( keyIndex, 1 );
+			this.values.splice( keyIndex, 1 );
+		} else {
+			throw "Key does not exist";
+		}
+	};
+	api.retrieve = function( key ) {
+		var value = null;
+		var keyIndex = this.getIndex( key );
+		if( keyIndex >= 0 ) {
+			value = this.values[ keyIndex ];
+		}
+		return value;
+	};
+    api.getIndex = function( testKey ) {
+		var i = 0,
+			len = this.keys.length,
+			key;
+		for( ; i<len; ++i ){
+			key = this.keys[i];
+			if( key == testKey ) {
+				return i;
+			}
+		}
+		return -1;
+	};
+    api.has = function( testKey ) {
+		var i = 0,
+			len = this.keys.length,
+			key;
+		for( ; i<len; ++i ){
+			key = this.keys[i];
+			if( key == testKey ) {
+				return true;
+			}
+		}
+		return false;
+	};
+	api.forEach = function( action ) {
+		var i = 0,
+			len = this.keys.length,
+			key, 
+			value;
+		
+		for( ; i<len; ++i ) {
+			key = this.keys[i];
+			value = this.values[i];
+			var breakHere = action( key, value );
+			if( breakHere == "return" ) {
+				return false;
+			}
+		}
+		return true;
+	};  
+	return Dictionary;
+}));
