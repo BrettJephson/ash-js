@@ -1,7 +1,9 @@
 define( "game/nodes/motioncontrol",
-    [ "game/components/motioncontrols", "game/components/position", "game/components/motion" ],
-    function( MotionControls, Position, Motion ) {
-        function MotionControl() {};
+    [ "ash/node", "game/components/motioncontrols", "game/components/position", "game/components/motion" ],
+    function( Node, MotionControls, Position, Motion ) {
+        function MotionControl() {
+			Object.extend( MotionControl.prototype, Node.prototype );
+		};
 		MotionControl.prototype.control = null;
         MotionControl.prototype.position = null;
         MotionControl.prototype.motion = null;

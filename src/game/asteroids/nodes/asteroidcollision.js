@@ -1,7 +1,9 @@
 define( "game/nodes/asteroidcollision",
-    [ "game/components/asteroid", "game/components/position" ],
-    function( Asteroid, Position ) {
-		function AsteroidCollision() {}
+    [ "ash/node", "game/components/asteroid", "game/components/position" ],
+    function( Node, Asteroid, Position ) {
+		function AsteroidCollision() {
+			Object.extend( AsteroidCollision.prototype, Node.prototype );
+		}
 		AsteroidCollision.prototype.asteroid = null;
 		AsteroidCollision.prototype.position = null;
 		///TODO come back to this inelegant bit

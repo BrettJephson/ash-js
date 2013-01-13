@@ -12,8 +12,8 @@
 } ( this, function() {
     "use strict";
 	function Point( x, y ) {
-		this.x = x;
-		this.y = y;
+		this.x = x || 0;
+		this.y = y || 0;
 	}
 	Point.VERSION = "0.1.0";
 	Point.prototype.x = null;

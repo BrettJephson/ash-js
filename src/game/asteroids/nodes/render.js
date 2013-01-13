@@ -1,7 +1,9 @@
 define( "game/nodes/render",
-    [ "game/components/position", "game/components/display" ],
-    function( Position, Display ) {
-        function Render() {}
+    [ "ash/node", "game/components/position", "game/components/display" ],
+    function( Node, Position, Display ) {
+        function Render() {
+			Object.extend( Render.prototype, Node.prototype );
+		}
 		Render.prototype.position = Position;
 		Render.prototype.display = Display;
 		Render.prototype.types = {

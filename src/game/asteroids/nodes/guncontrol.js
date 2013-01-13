@@ -1,7 +1,9 @@
 define( "game/nodes/guncontrol",
-    [ "game/components/guncontrols", "game/components/gun", "game/components/position" ],
-    function( GunControls, Gun, Position ) {
-		function GunControl() {}
+    [ "ash/node", "game/components/guncontrols", "game/components/gun", "game/components/position" ],
+    function( Node, GunControls, Gun, Position ) {
+		function GunControl() {
+			Object.extend( GunControl.prototype, Node.prototype );
+		}
 		GunControl.prototype.control = null;
 		GunControl.prototype.gun = null;
         GunControl.prototype.position = null;

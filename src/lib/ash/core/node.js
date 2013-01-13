@@ -14,9 +14,10 @@
     }
 } ( this, function() {
     "use strict";
-    return {
-        entity : null, //Entity
-        previous : null, //Node
-        next : null //Node
-    };
+	function Node() {}
+	var api = Node.prototype;
+	api.entity = null;
+	api.previous = null;
+	api.next = null;
+    return Node;
 }));

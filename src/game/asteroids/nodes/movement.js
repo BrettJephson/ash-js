@@ -1,7 +1,9 @@
 define( "game/nodes/movement",
-    [ "game/components/position", "game/components/motion" ],
-    function( Position, Motion ) {
-        function Movement() {}
+    [ "ash/node", "game/components/position", "game/components/motion" ],
+    function( Node, Position, Motion ) {
+        function Movement() {
+			Object.extend( Movement.prototype, Node.prototype );
+		}
 		Movement.prototype.position = null;
 		Movement.prototype.motion = null;
 		Movement.prototype.types = {

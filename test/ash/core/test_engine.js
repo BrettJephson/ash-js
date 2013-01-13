@@ -90,13 +90,16 @@ test("releaseNodeListCallsCleanUp", function() {
     equal( MockFamily.instances[0].cleanUpCalls, 1 );
 });
 
-function MockNode() {}
+function MockNode() {
+	Object.extend( MockNode.prototype, Node.prototype );	
+}
 MockNode.prototype.point = null;
-Object.extend( MockNode.prototype, Node );
 
-function MockNode2() {}
+function MockNode2() {
+	Object.extend( MockNode2.prototype, Node.prototype );
+}
 MockNode2.prototype.matrix = null;
-Object.extend( MockNode2.prototype, Node );
+
 
 function MockFamily( nodeObject, engine ) {
 	Object.extend( MockFamily.prototype, Family.prototype );

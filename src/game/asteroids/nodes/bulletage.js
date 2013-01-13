@@ -1,7 +1,9 @@
 define( "game/nodes/bulletage",
-    [ "game/components/bullet" ],
-    function( Bullet ) {
-		function BulletAge() {}
+    [ "ash/node", "game/components/bullet" ],
+    function( Node, Bullet ) {
+		function BulletAge() {
+			Object.extend( BulletAge.prototype, Node.prototype );
+		}
 		BulletAge.prototype.bullet = null;
 		BulletAge.prototype.types = {
 			bullet : Bullet
