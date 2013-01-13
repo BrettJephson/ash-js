@@ -1,5 +1,4 @@
 define( "game/components/motioncontrols",
-    [],
     function() {
 		function MotionControls( left, right, accelerate, accelerationRate, rotationRate ) {
 			this.left = left;
