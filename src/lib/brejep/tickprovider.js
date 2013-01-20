@@ -8,7 +8,6 @@ define(
         api.ticked = new signals.Signal();
         api.request = null;
         api.start = function() {
-			this.previousTime = Date.now();
 			this.request = requestAnimationFrame( this.tick.bind( this ) );
 		};
         api.stop = function() {
@@ -20,9 +19,10 @@ define(
         api.remove = function( listener, context ) {
 			this.ticked.remove( listener, context );
 		};
+        api.count = 0;
         api.tick = function( timestamp ) {
-			timestamp = timestamp || Date.now();
-			var tmp = this.previousTime;
+			var timestamp = timestamp || Date.now();
+			var tmp = this.previousTime || timestamp;
 			this.previousTime = timestamp;
 			var delta = ( timestamp - tmp ) * 0.001;
 			this.ticked.dispatch( delta );
