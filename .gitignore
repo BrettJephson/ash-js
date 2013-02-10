@@ -1,3 +1,6 @@
 .DS_Store
 *.fdproj
 .idea
+ash-require.js
+ash.js
+ash.min.js
