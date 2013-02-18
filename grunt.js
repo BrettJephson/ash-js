@@ -2,7 +2,8 @@ module.exports = function (grunt) {
     'use strict';
     grunt.initConfig({
         lint: {
-            files: ['../src/**/*.js']
+            files: ['src/**/*.js'],
+            core: [ 'src/ash/core/system.js' ]
         },
         jshint: {
             options: {
@@ -18,7 +19,7 @@ module.exports = function (grunt) {
                 quotmark: true,
                 undef: true,
                 unused: true,
-                strict: true,
+                strict: false,
                 trailing: true,
                 maxparams: 3,
                 maxdepth: 2,
@@ -30,7 +31,7 @@ module.exports = function (grunt) {
             }
         },
         qunit: {
-            all: ['../test/test_runner.html']
+            all: ['test/test_runner.html']
         },
         server: {
             port: 8000,
@@ -45,34 +46,34 @@ module.exports = function (grunt) {
         concat: {
             dist: {
                 src: [
-                    '../lib/vendor/signals.js',
-                    '../lib/brejep/fillsnfixes.js',
-                    '../lib/brejep/dictionary.js',
-                    '../lib/brejep/point.js',
-                    '../src/ash/core/entity.js',
-                    '../src/ash/core/entitylist.js',
-                    '../src/ash/core/node.js',
-                    '../src/ash/core/nodelist.js',
-                    '../src/ash/core/nodepool.js',
-                    '../src/ash/core/family.js',
-                    '../src/ash/core/componentmatchingfamily.js',
-                    '../src/ash/core/system.js',
-                    '../src/ash/core/systemlist.js',
-                    '../src/ash/core/engine.js'
+                    'lib/vendor/signals.js',
+                    'lib/brejep/fillsnfixes.js',
+                    'lib/brejep/dictionary.js',
+                    'lib/brejep/point.js',
+                    'src/ash/core/entity.js',
+                    'src/ash/core/entitylist.js',
+                    'src/ash/core/node.js',
+                    'src/ash/core/nodelist.js',
+                    'src/ash/core/nodepool.js',
+                    'src/ash/core/family.js',
+                    'src/ash/core/componentmatchingfamily.js',
+                    'src/ash/core/system.js',
+                    'src/ash/core/systemlist.js',
+                    'src/ash/core/engine.js'
                 ],
-                dest: '../ash.js'
+                dest: 'build/ash.js'
             }
         },
         min: {
             dist: {
-                src: ['../ash.js'],
-                dest: '../ash.min.js'
+                src: ['build/ash.js'],
+                dest: 'build/ash.min.js'
             }
         },
         requirejs: {
             compile: {
                 options: {
-                    baseUrl: '../',
+                    baseUrl: '',
                     name: 'build/ash-build',
                     optimize: 'uglify',
                     findNestedDependencies: true,
@@ -82,7 +83,7 @@ module.exports = function (grunt) {
                         'libs/signals': 'lib/vendor/signals',
                         'almond': 'lib/vendor/almond'
                     },
-                    out: '../ash.require.js'
+                    out: 'build/ash.require.js'
                 }
             }
         }
