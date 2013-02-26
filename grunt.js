@@ -1,9 +1,7 @@
 module.exports = function (grunt) {
-    'use strict';
     grunt.initConfig({
         lint: {
-            files: ['src/**/*.js'],
-            core: [ 'src/ash/core/system.js' ]
+            files: ['src/**/*.js']
         },
         jshint: {
             options: {
@@ -43,27 +41,6 @@ module.exports = function (grunt) {
                 tasks: 'all_checks'
             }
         },
-        concat: {
-            dist: {
-                src: [
-                    'lib/vendor/signals.js',
-                    'lib/brejep/fillsnfixes.js',
-                    'lib/brejep/dictionary.js',
-                    'lib/brejep/point.js',
-                    'src/ash/core/entity.js',
-                    'src/ash/core/entitylist.js',
-                    'src/ash/core/node.js',
-                    'src/ash/core/nodelist.js',
-                    'src/ash/core/nodepool.js',
-                    'src/ash/core/family.js',
-                    'src/ash/core/componentmatchingfamily.js',
-                    'src/ash/core/system.js',
-                    'src/ash/core/systemlist.js',
-                    'src/ash/core/engine.js'
-                ],
-                dest: 'build/ash.js'
-            }
-        },
         min: {
             dist: {
                 src: ['build/ash.js'],
@@ -73,17 +50,7 @@ module.exports = function (grunt) {
         requirejs: {
             compile: {
                 options: {
-                    baseUrl: '',
-                    name: 'build/ash-build',
-                    optimize: 'uglify',
-                    findNestedDependencies: true,
-                    paths: {
-                        'ash': 'src/ash/core',
-                        'brejep': 'lib/brejep',
-                        'libs/signals': 'lib/vendor/signals',
-                        'almond': 'lib/vendor/almond'
-                    },
-                    out: 'build/ash.require.js'
+                    mainConfigFile: "build.js"
                 }
             }
         }

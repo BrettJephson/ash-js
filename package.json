@@ -1,13 +1,15 @@
 {
     "name": "ash-js",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "description": "JavaScript port of Ash framework",
     "private": true,
     "dependencies" : {
-        "grunt": "0.3.x",
-        "grunt-requirejs": "0.3.x"
+    },
+    "devDependencies" : {
+        "grunt": "~0.3.16",
+        "grunt-contrib-requirejs": "~0.3.2"
     },
     "scripts": {
-        "grunt": "node_modules/.bin/grunt"
+        "test": "grunt test"
     }
 }
