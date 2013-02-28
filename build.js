@@ -7,19 +7,20 @@ requirejs.config({
 
   // specify custom module name paths
   paths: {
-    "ash": "./src/ash/core",
-    "brejep": "./lib/brejep",
-    "signals": "./lib/vendor/signals"
+    "ash": "src/ash/",
+    "ash-core": "src/ash/core",
+    "brejep": "lib/brejep",
+    "signals": "lib/vendor/signals"
   },
 
   // target amd loader shim as the main module, path is relative to baseUrl.
-  name: "./lib/vendor/almond",
+  name: "lib/vendor/almond",
 
   optimize: "none",
 
   // files to include along with almond.  only lib/skeleton.js is defined, as
   // it pulls in the rest of the dependencies automatically.
-  include: ["ash-core"],
+  include: [ "ash/ash-framework" ],
 
   // code to wrap around the start / end of the resulting build file
   // the global variable used to expose the API is defined here

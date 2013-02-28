@@ -55,12 +55,12 @@ module.exports = function (grunt) {
             }
         }
     });
-    
+
     grunt.registerTask('all_checks', 'lint all_tests');
     grunt.registerTask('all_tests', 'server qunit');
     grunt.registerTask('compile', 'concat min');
     grunt.registerTask('require', 'requirejs');
     grunt.registerTask('default', 'all_checks');
-    
+
     grunt.loadNpmTasks('grunt-requirejs');
 };
