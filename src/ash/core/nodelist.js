@@ -1,20 +1,13 @@
 /**
  * Ash-js Node List
  */
-(function( root, factory ) {
-    // We want the object to work with or without AMD
-    if( typeof define === 'function' && define.amd ) {
-        define('ash/nodelist', ["libs/signals"], factory );
-    } else {
-        // If not using AMD, references to dependencies must be available on the root object
-        if( typeof root.ash === 'undefined') {
-            root.ash = {};
-        }
-        root.ash.nodelist = factory( root.signals );
-    }
-} ( this, function( signals ) {
-    "use strict";
-    function NodeList() {}
+define([
+    'signals'
+], function (signals) {
+    'use strict';
+
+    var NodeList = function () {};
+
     NodeList.prototype.head = null;
     NodeList.prototype.tail = null;
     NodeList.prototype.nodeAdded = new signals.Signal();
@@ -196,5 +189,6 @@
         }
         return head;
     };
+
     return NodeList;
-}));
+});

@@ -1,34 +1,27 @@
 /**
  * Ash-js engine
+ *
  */
-(function( root, factory ) {
-    // We want the object to work with or without AMD
-    if( typeof define === 'function' && define.amd ) {
-        define(
-            'ash/engine',
-            [ "ash/componentmatchingfamily", "ash/entitylist", "ash/systemlist", "libs/signals", "brejep/dictionary" ],
-            factory
-        );
-    } else {
-        // If not using AMD, references to dependencies must be available on the root object
-        if( typeof root.ash === 'undefined') {
-            root.ash = {};
-        }
-        root.ash.engine = factory( root.ash.componentmatchingfamily, root.ash.entitylist, root.ash.systemlist, root.signals, root.brejep.dictionary );
-    }
-}( this, function( ComponentMatchingFamily, EntityList, SystemList, signals, Dictionary ) {
-    "use strict";
-    function Engine() {
+define([
+    'ash-core/componentmatchingfamily',
+    'ash-core/entitylist',
+    'ash-core/systemlist',
+    'signals',
+    'brejep/dictionary'
+], function (ComponentMatchingFamily, EntityList, SystemList, signals, Dictionary) {
+    'use strict';
+
+    var Engine = function () {
         this.initialise();
     }
-    
+
     var api = Engine.prototype;
     api.initialise = function() {
         this.entityList = new EntityList(),
         this.systemList = new SystemList();
         this.families = new Dictionary();
-        
-        this.__defineGetter__("entities", function() {
+
+        this.__defineGetter__('entities', function() {
             var tmpEntities = [];
             for( var entity = this.entityList.head; entity; entity = entity.next )
             {
@@ -36,8 +29,8 @@
             }
             return tmpEntities;
         });
-        
-        this.__defineGetter__("systems", function() {
+
+        this.__defineGetter__('systems', function() {
             var tmpSystems = [];
             for( var system = this.systemList.head; system; system = system.next )
             {
@@ -45,7 +38,7 @@
             }
             return tmpSystems;
         });
-        
+
         return this;
     };
     api.familyClass = ComponentMatchingFamily;
@@ -120,6 +113,6 @@
         this.updating = false;
         this.updateComplete.dispatch();
     };
-    
+
     return Engine;
-}));
+});

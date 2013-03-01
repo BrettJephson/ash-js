@@ -1,29 +1,23 @@
 /**
- * @author Brett Jephson
+ * Ash-js Component matching family
+ *
  */
-(function( root, factory ) {
-    // We want the object to work with or without AMD
-    if( typeof define === 'function' && define.amd ) {
-        define(
-            'ash/componentmatchingfamily',
-            ['ash/family', 'ash/nodepool', 'ash/nodelist', 'brejep/dictionary'],
-            factory
-        );
-    } else {
-        // If not using AMD, references to dependencies must be available on the root object
-        if( typeof root.ash === 'undefined') {
-            root.ash = {};
-        }
-        root.ash.componentmatchingfamily = factory( root.ash.family, root.ash.nodepool, root.ash.nodelist, root.brejep.dictionary );
-    }
-}( this, function( Family, NodePool, NodeList, Dictionary) {
-    function ComponentMatchingFamily( nodeClass, engine ) {    
-        Object.extend( ComponentMatchingFamily.prototype, Family.prototype );
+define([
+    'ash-core/family',
+    'ash-core/nodepool',
+    'ash-core/nodelist',
+    'brejep/dictionary',
+    'brejep/objectutils'
+], function (Family, NodePool, NodeList, Dictionary, ObjectUtils) {
+    'use strict';
+
+    var ComponentMatchingFamily = function (nodeClass, engine) {
+        ObjectUtils.extendObject(ComponentMatchingFamily.prototype, Family.prototype);
         this.nodeClass = nodeClass;
         this.engine = engine;
-        this.initialise(); 
+        this.initialise();
     }
-    
+
     var api = ComponentMatchingFamily.prototype;
     api.nodeClass = null;
     api.engine = null;
@@ -36,28 +30,28 @@
     });
     api.initialise = function() {
         var nodeClass = this.nodeClass;
-        
+
         var nodePool = this.nodePool = new NodePool( nodeClass );
         this.nodes = new NodeList();
         this.entities = new Dictionary();
         this.components = new Dictionary();
-        
+
         nodePool.dispose( nodePool.get() );
-        
+
         var nodeClassPrototype = nodeClass.prototype;
-        
+
         for( var property in nodeClassPrototype ) {
             ///TODO - tidy this up...
-            if( nodeClassPrototype.hasOwnProperty( property ) 
-                && property != "types" 
-                && property != "next" 
-                && property != "previous" 
+            if( nodeClassPrototype.hasOwnProperty( property )
+                && property != "types"
+                && property != "next"
+                && property != "previous"
                 && property != "entity" ) {
                 var componentObject = nodeClassPrototype["types"][property];
                 this.components.add( componentObject, property );
             }
         }
-        
+
         return this;
     };
     api.newEntity = function( entity ) {
@@ -102,11 +96,11 @@
         }
     };
     api.removeIfMatch = function( entity ) {
-        var entities = this.entities,    
+        var entities = this.entities,
             nodes = this.nodes,
             engine = this.engine,
             nodePool = this.nodePool;
-            
+
         if( entities.has( entity ) )
         {
             var node = entities.retrieve( entity );
@@ -129,5 +123,5 @@
         this.nodePool.releaseCache();
     };
 
-    return ComponentMatchingFamily
-}));
+    return ComponentMatchingFamily;
+});

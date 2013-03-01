@@ -1,22 +1,17 @@
 /**
  * Ash-js Entity
+ *
  */
-(function( root, factory ) {
-    // We want the object to work with or without AMD
-    if( typeof define === 'function' && define.amd ) {
-           define('ash/entity', [ "libs/signals", "brejep/dictionary" ], factory );
-    } else {
-        // If not using AMD, references to dependencies must be available on the root object
-        if( typeof root.ash === 'undefined') {
-            root.ash = {};
-        }
-        root.ash.entity = factory( root.signals, root.brejep.dictionary );
-    }
-} ( this, function( signals, Dictionary ) {
-    "use strict";
-    function Entity() {
+define([
+    'signals',
+    'brejep/dictionary'
+], function (signals, Dictionary) {
+    'use strict';
+
+    var Entity = function () {
         this.initialise();
     }
+
     var api = Entity.prototype;
     api.componentAdded = new signals.Signal();
     api.componentRemoved = new signals.Signal();
@@ -77,5 +72,6 @@
         } );
         return copy;
     };
+
     return Entity;
-}));
+});

@@ -1,22 +1,13 @@
 /**
  * Ash-js Node Pool
  */
-(function( root, factory ) {
-    // We want the object to work with or without AMD
-    if( typeof define === 'function' && define.amd ) {
-        define('ash/nodepool', factory );
-    } else {
-        // If not using AMD, references to dependencies must be available on the root object
-        if( typeof root.ash === 'undefined') {
-            root.ash = {};
-        }
-        root.ash.nodepool = factory();
-    }
-} ( this, function() {
-    "use strict";
-    function NodePool( nodeClass ) {
-        this.initialise( nodeClass );
-    }
+define(function () {
+    'use strict';
+
+    var NodePool = function (nodeClass) {
+        this.initialise(nodeClass);
+    };
+
     var api = NodePool.prototype;
     api.tail = null;
     api.cacheTail = null;
@@ -53,5 +44,6 @@
             this.tail = node;
         }
     };
+
     return NodePool;
-}));
+});

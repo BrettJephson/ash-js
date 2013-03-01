@@ -1,22 +1,11 @@
 /**
  * Ash-js EntityList
  */
-(function( root, factory ) {
-    // We want the object to work with or without AMD
-    if( typeof define === 'function' && define.amd ) {
-        define('ash/entitylist', factory );
-    } else {
-        // If not using AMD, references to dependencies must be available on the root object
-        if( typeof root.ash === 'undefined') {
-            root.ash = {};
-        }
-        root.ash.entitylist = factory();
-    }
-} ( this, function() {
-    "use strict";
-    function EntityList() {
-        
-    }
+define(function() {
+    'use strict';
+
+    var EntityList = function () {};
+
     var api = EntityList.prototype;
     api.head = null; /* Entity */
     api.tail = null; /* Entity */
@@ -52,5 +41,6 @@
         }
         this.tail = null;
     };
+
     return EntityList;
-}));
+});

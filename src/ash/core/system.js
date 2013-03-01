@@ -1,20 +1,11 @@
 /**
  * Ash-js System
  */
-(function( root, factory ) {
-    // We want the object to work with or without AMD
-    if( typeof define === 'function' && define.amd ) {
-        define('ash/system', factory );
-    } else {
-        // If not using AMD, references to dependencies must be available on the root object
-        if( typeof root.ash === 'undefined') {
-            root.ash = {};
-        }
-        root.ash.system = factory();
-    }
-} ( this, function() {
-    "use strict";
-    function System() {}
+define(function () {
+    'use strict';
+
+    var System = function () {};
+
     System.prototype.previous = null; /* System */
     System.prototype.next = null; /* System */
     System.prototype.priority = 0;
@@ -33,5 +24,6 @@
     System.prototype.is = function( type ) {
         return type.prototype.isPrototypeOf( this );
     };
+
     return System;
-}));
+});

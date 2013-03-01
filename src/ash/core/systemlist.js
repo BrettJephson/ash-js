@@ -1,18 +1,9 @@
 /**
  * Ash-js System List
  */
-(function( root, factory ) {
-    // We want the object to work with or without AMD
-    if( typeof define === 'function' && define.amd ) {
-        define('ash/systemlist', factory );
-    } else {
-        // If not using AMD, references to dependencies must be available on the root object
-        if( typeof root.ash === 'undefined') {
-            root.ash = {};
-        }
-        root.ash.systemlist = factory();
-    }
-} ( this, function() {
+define(function () {
+    'use strict';
+
     function SystemList() {}
     var api = SystemList.prototype;
     api.head = null; /* System */
@@ -77,5 +68,6 @@
         }
         return null;
     };
+
     return SystemList;
-}));
+});
