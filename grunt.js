@@ -52,6 +52,11 @@ module.exports = function (grunt) {
                 options: {
                     mainConfigFile: "build.js"
                 }
+            },
+            minified: {
+                options: {
+                    mainConfigFile: "build.min.js"
+                }
             }
         }
     });
