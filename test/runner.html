@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Ash-js Test Runner</title>
+    <link rel="stylesheet" href="lib/qunit.css" type="text/css" media="screen">
+    <script type="text/javascript" src="lib/qunit.js"></script>
+    <script>
+    var require = {
+        paths: {
+            'ash': '../src/ash/',
+            'ash-core': '../src/ash/core',
+            'ash-framework': '../src/ash/ash-framework',
+            'brejep': '../lib/brejep',
+            'signals': '../lib/vendor/signals'
+        }
+    }
+    </script>
+    <script src="../lib/vendor/require.min.js"></script>
+</head>
+
+<body>
+    <script type="text/javascript">
+        window.addEventListener("load", function onLoad() {
+            QUnit.config.autostart = false;
+
+            // Without this setTimeout, the specs don't always get execute in webKit browsers
+            setTimeout(function () {
+                //TODO load tests using require
+                /*
+                'spec/engine',
+                'spec/entity',
+                'spec/system',
+                'spec/componentmatchingfamily'
+                'spec/nodelist',
+                */
+                require([
+                    'spec/componentmatchingfamily'
+                ], function (one) {
+                    //now trigger them.
+                    QUnit.start();
+                });
+
+            }, 10);
+            window.removeEventListener("load", onLoad, true);
+        }, true);
+    </script>
+
+    <h1 id="qunit-header">Ash-js Test Suite</h1>
+    <h2 id="qunit-banner"></h2>
+    <div id="qunit-testrunner-toolbar"></div>
+    <h2 id="qunit-userAgent"></h2>
+    <ol id="qunit-tests"></ol>
+    <div id="qunit-fixture">test markup</div>
+    <ul>
+        <li><a href="./test_runner.html">All tests</a></li>
+        <li><a href="./test_runner.html?filter=Test Engine">Module: Test Engine</a></li>
+        <li><a href="./test_runner.html?filter=Test Entities">Module: Test Entities</a></li>
+        <li><a href="./test_runner.html?filter=Test System">Module: Test System</a></li>
+        <li><a href="./test_runner.html?filter=Test Nodelist">Module: Test Nodelist</a></li>
+        <li><a href="./test_runner.html?filter=Test Component Matching Family">Module: Test Component Matching Famiy</a></li>
+    </ul>
+</body>
+</html>

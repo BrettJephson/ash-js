@@ -29,7 +29,7 @@ module.exports = function (grunt) {
             }
         },
         qunit: {
-            all: ['test/test_runner.html']
+            all: ['test/runner.html']
         },
         server: {
             port: 8000,
