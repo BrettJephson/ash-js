@@ -2,25 +2,22 @@ define ([
     'ash-framework',
     'brejep/point',
     'brejep/point3',
-    'brejep/objectutils'
-], function(Ash, Point, Point3, ObjectUtils) {
+    'brejep/class'
+], function(Ash, Point, Point3, Class) {
     'use strict';
 
-    var engine,
-        family;
+    var engine, family;
 
-    var MockNode = function () {
-        ObjectUtils.extendObject(MockNode.prototype, Node.prototype);
-    };
+    // prepare MockNode
+    var MockNode = Ash.Node.extend({
+        point: null,
+        types: {
+            point: Point
+        }
+    });
 
     module("Test Component Matching Family", {
         setup: function() {
-            // prepare MockNode
-            MockNode.prototype.point = null;
-            MockNode.prototype.types = {
-                point : Point
-            };
-
             engine = new Ash.Engine();
             family = new Ash.ComponentMatchingFamily(MockNode, engine);
         },

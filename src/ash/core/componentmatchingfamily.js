@@ -6,122 +6,119 @@ define([
     'ash-core/family',
     'ash-core/nodepool',
     'ash-core/nodelist',
-    'brejep/dictionary',
-    'brejep/objectutils'
-], function (Family, NodePool, NodeList, Dictionary, ObjectUtils) {
+    'brejep/dictionary'
+], function (Family, NodePool, NodeList, Dictionary) {
     'use strict';
 
-    var ComponentMatchingFamily = function (nodeClass, engine) {
-        ObjectUtils.extendObject(ComponentMatchingFamily.prototype, Family.prototype);
-        this.nodeClass = nodeClass;
-        this.engine = engine;
-        this.initialise();
-    }
+    var ComponentMatchingFamily = Family.extend({
+        nodeClass: null,
+        engine: null,
+        nodes: null,
+        entities: null,
+        components: null,
+        nodePool: null,
 
-    var api = ComponentMatchingFamily.prototype;
-    api.nodeClass = null;
-    api.engine = null;
-    api.nodes = null;
-    api.entities = null;
-    api.components = null;
-    api.nodePool = null;
-    api.__defineGetter__("nodeList", function() {
-        return this.nodes;
+        init: function (nodeClass, engine) {
+            this.nodeClass = nodeClass;
+            this.engine = engine;
+            this.__defineGetter__("nodeList", function() {
+                return this.nodes;
+            });
+
+            var nodePool = this.nodePool = new NodePool(nodeClass);
+            this.nodes = new NodeList();
+            this.entities = new Dictionary();
+            this.components = new Dictionary();
+
+            nodePool.dispose(nodePool.get());
+
+            var nodeClassPrototype = nodeClass.prototype;
+
+            for(var property in nodeClassPrototype) {
+                ///TODO - tidy this up...
+                if(nodeClassPrototype.hasOwnProperty(property)
+                    && property != "types"
+                    && property != "next"
+                    && property != "previous"
+                    && property != "entity") {
+                    var componentObject = nodeClassPrototype["types"][property];
+                    this.components.add(componentObject, property);
+                }
+            }
+        },
+
+        newEntity: function (entity) {
+            this.addIfMatch(entity);
+        },
+
+        componentAddedToEntity: function (entity, componentClass) {
+            this.addIfMatch(entity);
+        },
+
+        componentRemovedFromEntity: function (entity, componentClass) {
+            if (this.components.has(componentClass)) {
+                this.removeIfMatch(entity);
+            }
+        },
+
+        removeEntity: function (entity) {
+            this.removeIfMatch(entity);
+        },
+
+        cleanUp: function () {
+            for (var node = this.nodes.head; node; node = node.next) {
+                delete this.entities.retrieve(node.entity);
+            }
+            this.nodes.removeAll();
+        },
+
+        addIfMatch: function (entity) {
+            if (!this.entities.has(entity)) {
+                var componentClass;
+                if (
+                    !this.components.forEach(function(componentClass, componentName) {
+                        if(!entity.has(componentClass)) {
+                            return "return";
+                        }
+                    })
+               ) { return; }
+                var node = this.nodePool.get();
+                node.entity = entity;
+                this.components.forEach(function (componentClass, componentName) {
+                    node[componentName] = entity.get(componentClass);
+                });
+                this.entities.add(entity, node);
+                entity.componentRemoved.add(this.componentRemovedFromEntity, this);
+                this.nodes.add(node);
+            }
+        },
+
+        removeIfMatch: function (entity) {
+            var entities = this.entities,
+                nodes = this.nodes,
+                engine = this.engine,
+                nodePool = this.nodePool;
+
+            if (entities.has(entity))
+            {
+                var node = entities.retrieve(entity);
+                entity.componentRemoved.remove(this.componentRemovedFromEntity, this);
+                entities.remove(entity);
+                nodes.remove(node);
+                if (engine.updating) {
+                    nodePool.cache(node);
+                    engine.updateComplete.add(this.releaseNodePoolCache, this);
+                } else {
+                    nodePool.dispose(node);
+                }
+            }
+        },
+
+        releaseNodePoolCache: function () {
+            this.engine.updateComplete.remove(this.releaseNodePoolCache);
+            this.nodePool.releaseCache();
+        }
     });
-    api.initialise = function() {
-        var nodeClass = this.nodeClass;
-
-        var nodePool = this.nodePool = new NodePool( nodeClass );
-        this.nodes = new NodeList();
-        this.entities = new Dictionary();
-        this.components = new Dictionary();
-
-        nodePool.dispose( nodePool.get() );
-
-        var nodeClassPrototype = nodeClass.prototype;
-
-        for( var property in nodeClassPrototype ) {
-            ///TODO - tidy this up...
-            if( nodeClassPrototype.hasOwnProperty( property )
-                && property != "types"
-                && property != "next"
-                && property != "previous"
-                && property != "entity" ) {
-                var componentObject = nodeClassPrototype["types"][property];
-                this.components.add( componentObject, property );
-            }
-        }
-
-        return this;
-    };
-    api.newEntity = function( entity ) {
-        this.addIfMatch( entity );
-    };
-    api.componentAddedToEntity = function( entity, componentClass ) {
-        this.addIfMatch( entity );
-    };
-    api.componentRemovedFromEntity = function( entity, componentClass ) {
-        if( this.components.has( componentClass ) ) {
-            this.removeIfMatch( entity );
-        }
-    };
-    api.removeEntity = function( entity ) {
-        this.removeIfMatch( entity );
-    };
-    api.cleanUp = function() {
-        for( var node = this.nodes.head; node; node = node.next ) {
-            delete this.entities.retrieve( node.entity );
-        }
-        this.nodes.removeAll();
-    };
-    api.addIfMatch = function( entity ) {
-        if( !this.entities.has( entity ) )
-        {
-            var componentClass;
-            if(
-                !this.components.forEach( function( componentClass, componentName ) {
-                    if( !entity.has( componentClass ) ) {
-                        return "return";
-                    }
-                } )
-            ) { return; }
-            var node = this.nodePool.get();
-            node.entity = entity;
-            this.components.forEach( function( componentClass, componentName ) {
-                node[componentName] = entity.get( componentClass );
-            } );
-            this.entities.add(entity, node);
-            entity.componentRemoved.add( this.componentRemovedFromEntity, this );
-            this.nodes.add( node );
-        }
-    };
-    api.removeIfMatch = function( entity ) {
-        var entities = this.entities,
-            nodes = this.nodes,
-            engine = this.engine,
-            nodePool = this.nodePool;
-
-        if( entities.has( entity ) )
-        {
-            var node = entities.retrieve( entity );
-            entity.componentRemoved.remove( this.componentRemovedFromEntity, this );
-            entities.remove( entity );
-            nodes.remove( node );
-            if( engine.updating )
-            {
-                nodePool.cache( node );
-                engine.updateComplete.add( this.releaseNodePoolCache, this );
-            }
-            else
-            {
-                nodePool.dispose( node );
-            }
-        }
-    };
-    api.releaseNodePoolCache = function() {
-        this.engine.updateComplete.remove( this.releaseNodePoolCache );
-        this.nodePool.releaseCache();
-    };
 
     return ComponentMatchingFamily;
 });

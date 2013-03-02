@@ -1,15 +1,16 @@
 /**
  * Ash-js Node
  */
-define(function () {
+define([
+    'brejep/class'
+], function (Class) {
     'use strict';
 
-    var Node = function () {};
-
-    var api = Node.prototype;
-    api.entity = null;
-    api.previous = null;
-    api.next = null;
+    var Node = Class.extend({
+        entity : null,
+        previous : null,
+        next : null
+    });
 
     return Node;
 });

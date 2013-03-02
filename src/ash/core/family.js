@@ -4,30 +4,35 @@
 define(function () {
     'use strict';
 
-    var Family = function () {};
+    var Family = Class.extend({
+        nodes: null,
 
-    Family.prototype.nodes = null;
-    Family.prototype.__defineGetter__("nodeList", function() {
-            return this.nodes;
+        init: function (nodeObject, engine) {
+            this.__defineGetter__("nodeList", function() {
+                return this.nodes;
+            });
+        },
+
+        newEntity: function (entity) {
+            throw new Error( 'should be overriden' );
+        },
+
+        removeEntity: function (entity) {
+            throw new Error( 'should be overriden' );
+        },
+
+        componentAddedToEntity: function (entity, componentClass) {
+            throw new Error( 'should be overriden' );
+        },
+
+        componentRemovedFromEntity: function (entity, componentClass) {
+            throw new Error( 'should be overriden' );
+        },
+
+        cleanUp: function () {
+            throw new Error( 'should be overriden' );
+        }
     });
-    Family.prototype.initialise = function( nodeObject, engine ) {
-        throw new Error( 'should be overriden' );
-    };
-    Family.prototype.newEntity = function( entity ) {
-        throw new Error( 'should be overriden' );
-    };
-    Family.prototype.removeEntity = function( entity ) {
-        throw new Error( 'should be overriden' );
-    };
-    Family.prototype.componentAddedToEntity = function( entity, componentClass ) {
-        throw new Error( 'should be overriden' );
-    };
-    Family.prototype.componentRemovedFromEntity = function( entity, componentClass ) {
-        throw new Error( 'should be overriden' );
-    };
-    Family.prototype.cleanUp = function() {
-        throw new Error( 'should be overriden' );
-    };
 
     return Family;
 });
