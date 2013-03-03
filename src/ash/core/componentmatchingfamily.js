@@ -48,12 +48,12 @@
         
         for( var property in nodeClassPrototype ) {
             ///TODO - tidy this up...
-            if( nodeClassPrototype.hasOwnProperty( property ) 
-                && property != "types" 
-                && property != "next" 
-                && property != "previous" 
-                && property != "entity" ) {
-                var componentObject = nodeClassPrototype["types"][property];
+            if( nodeClassPrototype.hasOwnProperty( property ) &&
+                property != "types" &&
+                property != "next" &&
+                property != "previous" &&
+                property != "entity" ) {
+                var componentObject = nodeClassPrototype.types[property];
                 this.components.add( componentObject, property );
             }
         }
@@ -76,7 +76,8 @@
     };
     api.cleanUp = function() {
         for( var node = this.nodes.head; node; node = node.next ) {
-            delete this.entities.retrieve( node.entity );
+            //delete this.entities.retrieve( node.entity );
+            this.entities.remove( node.entity );
         }
         this.nodes.removeAll();
     };
@@ -129,5 +130,5 @@
         this.nodePool.releaseCache();
     };
 
-    return ComponentMatchingFamily
+    return ComponentMatchingFamily;
 }));

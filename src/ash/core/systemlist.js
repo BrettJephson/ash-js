@@ -27,7 +27,7 @@
                     break;
                 }
             }
-            if( node == this.tail ) {
+            if( node === this.tail ) {
                 this.tail.next = system;
                 system.previous = this.tail;
                 system.next = null;
@@ -46,10 +46,10 @@
         }
     };
     api.remove = function( system ) {
-        if ( this.head == system ) {
+        if ( this.head === system ) {
             this.head = this.head.next;
         }
-        if ( this.tail == system ) {
+        if ( this.tail === system ) {
             this.tail = this.tail.previous;
         }
         if ( system.previous ) {

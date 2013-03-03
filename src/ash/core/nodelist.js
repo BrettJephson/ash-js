@@ -55,7 +55,7 @@
         this.tail = null;
     };
     NodeList.prototype.empty = function() {
-        return this.head == null;
+        return this.head === null;
     };
     NodeList.prototype.swap = function( node1, node2 ) {
         if( node1.previous == node2 ) {

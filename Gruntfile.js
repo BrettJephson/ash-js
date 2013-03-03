@@ -1,47 +1,16 @@
 module.exports = function (grunt) {
     'use strict';
     grunt.initConfig({
-        lint: {
-            files: ['src/**/*.js'],
-            core: [ 'src/ash/core/system.js' ]
-        },
+        pkg: grunt.file.readJSON('package.json'),
         jshint: {
+            files: [ 'Gruntfile.js', 'src/**/*.js' ],
             options: {
-                curly: true,
-                eqeqeq: true,
-                indent: 4,
-                camelcase: true,
-                latedef: true,
-                newcap: true,
-                noarg: true,
-                noempty: true,
-                nonew: true,
-                quotmark: true,
-                undef: true,
-                unused: true,
-                strict: false,
-                trailing: true,
-                maxparams: 3,
-                maxdepth: 2,
-                maxstatements: 5,
-                maxcomplexity: 5,
-                maxlen: 180,
-                devel: true,
-                browser: true
+                browser: true,
+                white: false
             }
         },
         qunit: {
-            all: ['test/test_runner.html']
-        },
-        server: {
-            port: 8000,
-            base: '.'
-        },
-        watch: {
-            tests: {
-                files: '<config:lint.files>',
-                tasks: 'all_checks'
-            }
+            files: ['test/test_runner.html']
         },
         concat: {
             dist: {
@@ -64,10 +33,11 @@ module.exports = function (grunt) {
                 dest: 'build/ash.js'
             }
         },
-        min: {
+        uglify: {
             dist: {
-                src: ['build/ash.js'],
-                dest: 'build/ash.min.js'
+                files: [
+                    { dest: 'build/ash.min.js', src: 'build/ash.js' }
+                ]
             }
         },
         requirejs: {
@@ -89,11 +59,13 @@ module.exports = function (grunt) {
         }
     });
     
-    grunt.registerTask('all_checks', 'lint all_tests');
-    grunt.registerTask('all_tests', 'server qunit');
-    grunt.registerTask('compile', 'concat min');
-    grunt.registerTask('require', 'requirejs');
-    grunt.registerTask('default', 'all_checks');
-    
-    grunt.loadNpmTasks('grunt-requirejs');
+    grunt.registerTask('test', ['jshint', 'qunit']);
+    grunt.registerTask('norequire', ['jshint', 'qunit', 'concat', 'uglify']);
+    grunt.registerTask('default', ['jshint', 'qunit', 'requirejs']);
+
+    grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-qunit');
+    grunt.loadNpmTasks('grunt-contrib-requirejs');
 };
