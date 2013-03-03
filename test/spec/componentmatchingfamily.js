@@ -1,3 +1,6 @@
+/**
+ * Testing Component Matching Family
+ */
 define ([
     'ash-framework',
     'brejep/point',
