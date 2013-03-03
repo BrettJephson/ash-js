@@ -1,7 +1,9 @@
 /**
  * Ash-js Family
  */
-define(function () {
+define([
+    'brejep/class',
+], function (Class) {
     'use strict';
 
     var Family = Class.extend({
