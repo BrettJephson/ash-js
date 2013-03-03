@@ -29,12 +29,12 @@
                 //TODO load tests using require
                 /*
                 'spec/engine',
-                'spec/entity',
                 'spec/system'
                 */
                 require([
                     'spec/componentmatchingfamily',
                     'spec/nodelist',
+                    'spec/entity'
                 ], function (one) {
                     //now trigger them.
                     QUnit.start();
