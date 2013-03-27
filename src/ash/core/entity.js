@@ -10,7 +10,7 @@ define([
 
     var Entity = function () {
         this.initialise();
-    }
+    };
 
     var api = Entity.prototype;
     api.componentAdded = new signals.Signal();

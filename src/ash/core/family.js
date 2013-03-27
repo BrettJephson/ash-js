@@ -2,7 +2,7 @@
  * Ash-js Family
  */
 define([
-    'brejep/class',
+    'brejep/class'
 ], function (Class) {
     'use strict';
 

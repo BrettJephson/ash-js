@@ -67,7 +67,7 @@ define([
 
         cleanUp: function () {
             for (var node = this.nodes.head; node; node = node.next) {
-                delete this.entities.retrieve(node.entity);
+                this.entities.remove(node.entity);
             }
             this.nodes.removeAll();
         },

@@ -13,7 +13,7 @@ define([
 
     var Engine = function () {
         this.initialise();
-    }
+    };
 
     var api = Engine.prototype;
     api.initialise = function() {
