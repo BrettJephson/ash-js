@@ -9,7 +9,7 @@ module.exports = function (grunt) {
             }
         },
         qunit: {
-            files: ['test/test_runner.html']
+            files: ['test/runner.html']
         },
         concat: {
             dist: {
