@@ -36,12 +36,12 @@ define([
 
             for(var property in nodeClassPrototype) {
                 ///TODO - tidy this up...
-                if(nodeClassPrototype.hasOwnProperty(property)
-                    && property != "types"
-                    && property != "next"
-                    && property != "previous"
-                    && property != "entity") {
-                    var componentObject = nodeClassPrototype["types"][property];
+                if(nodeClassPrototype.hasOwnProperty(property) &&
+                    property != "types" &&
+                    property != "next" &&
+                    property != "previous" &&
+                    property != "entity") {
+                    var componentObject = nodeClassPrototype.types[property];
                     this.components.add(componentObject, property);
                 }
             }
