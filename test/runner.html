@@ -21,28 +21,20 @@
 
 <body>
     <script type="text/javascript">
-        window.addEventListener("load", function onLoad() {
-            QUnit.config.autostart = false;
-
-            // Without this setTimeout, the specs don't always get execute in webKit browsers
-            setTimeout(function () {
-                //TODO load tests using require
-                /*
-                'spec/engine',
-                'spec/system'
-                */
-                require([
-                    'spec/componentmatchingfamily',
-                    'spec/nodelist',
-                    'spec/entity'
-                ], function (one) {
-                    //now trigger them.
-                    QUnit.start();
-                });
-
-            }, 10);
-            window.removeEventListener("load", onLoad, true);
-        }, true);
+        QUnit.config.autostart = false;
+    
+        //TODO load tests using require
+        /*
+        'spec/engine',
+        'spec/system'
+        */
+        require([
+            'spec/componentmatchingfamily',
+            'spec/nodelist',
+            'spec/entity'
+        ], function (one) {
+            QUnit.start();
+        });
     </script>
 
     <h1 id="qunit-header">Ash-js Test Suite</h1>
