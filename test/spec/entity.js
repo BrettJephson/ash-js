@@ -34,7 +34,15 @@ define ([
     test("addReturnsReferenceToEntity", function() {
         var component = new MockComponent();
         var e = entity.add( component );
-        ok( entity === e );
+        strictEqual(entity, e);
+    });
+
+    test("willRetrieveJustAddedComponent", function() {
+        var component = new MockComponent();
+        entity.add(component);
+        var all = entity.getAll();
+        equal(all.length, 1);
+        strictEqual(all[0], component);
     });
 
     test("canStoreAndRetrieveComponent", function() {
