@@ -95,8 +95,9 @@ define ([
         var component2 = new MockComponent2();
         entity.add( component2 );
         var all = entity.getAll();
-        equal( all.length, 2);
-        ok( hasItems( all, [component1, component2] ) );
+        equal(all.length, 2);
+        notEqual(all.indexOf(component1), -1);
+        notEqual(all.indexOf(component2), -1);
     });
 
     test("hasComponentIsFalseIfComponentTypeNotPresent", function() {
@@ -113,27 +114,27 @@ define ([
     });
 
     test("storingComponentTriggersAddedSignal", 1, function() {
-        stop();
         var component = new MockComponent();
         var callback = function() {
-            ok( true );
-            entity.componentAdded.remove( callback );
+            ok(true, 'added signal is triggered');
+            // TODO check the component
+            
             start();
         };
         entity.componentAdded.add( callback );
-        entity.add( component );
+        entity.add(component);
     });
 
     test("removingComponentTriggersRemovedSignal", 1, function() {
-        stop();
         var component = new MockComponent();
         var callback = function() {
-            ok( true );
-            entity.componentRemoved.remove( callback );
+            ok(true, 'removed signal is triggered');
+            // TODO check the component
+            
             start();
         };
-        entity.add( component );
-        entity.componentRemoved.add( callback );
+        entity.componentRemoved.add(callback);
+        entity.add(component);
         entity.remove( MockComponent );
     });
 
