@@ -2,7 +2,7 @@
  * Testing NodeList
  */
 define ([
-    'ash-framework',
+    'ash-framework'
 ], function(Ash) {
     'use strict';
 
@@ -13,7 +13,7 @@ define ([
         pos: undefined,
         init: function (value) {
             this.pos = value || 0;
-        },
+        }
     });
 
     module("Test Nodelist", {

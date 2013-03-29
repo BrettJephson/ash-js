@@ -47,4 +47,4 @@ requirejs.config({
 
   // build file destination, relative to the build file itself
   out: "./build/ash.js"
-})
+});

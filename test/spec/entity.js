@@ -3,7 +3,7 @@
  */
 define ([
     'ash-framework',
-    'brejep/class',
+    'brejep/class'
 ], function(Ash, Class) {
     'use strict';
 

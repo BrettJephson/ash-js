@@ -4,7 +4,7 @@
 define ([
     'ash-framework',
     'brejep/point',
-    'brejep/point3',
+    'brejep/point3'
 ], function(Ash, Point, Point3) {
     'use strict';
 
@@ -149,7 +149,7 @@ define ([
         for( node = nodes.head; node; node = node.next )
         {
             var index = entities.indexOf( node.entity );
-            if( index > -1 ) { entities.splice( index, 1 ) }
+            if( index > -1 ) { entities.splice( index, 1 ); }
         }
         equal( entities.length, 0 );
     });
