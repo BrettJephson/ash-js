@@ -2,7 +2,11 @@ module.exports = function (grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         jshint: {
-            files: [ 'Gruntfile.js', 'src/**/*.js' ],
+            files: [ 
+                'Gruntfile.js', 'build.js', 'build.min.js',
+                'src/**/*.js',
+                'test/spec/*.js'
+            ],
             options: {
                 browser: true,
                 white: false
