@@ -8,8 +8,8 @@ define([
 
     var Family = Class.extend({
         nodes: null,
-
-        init: function (nodeObject, engine) {
+        
+        constructor: function (nodeObject, engine) {
             this.__defineGetter__("nodeList", function() {
                 return this.nodes;
             });

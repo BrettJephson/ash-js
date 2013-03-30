@@ -10,8 +10,7 @@ define ([
 
     // prepare mock node
     var MockNode = Ash.Node.extend({
-        pos: undefined,
-        init: function (value) {
+        constructor: function (value) {
             this.pos = value || 0;
         }
     });

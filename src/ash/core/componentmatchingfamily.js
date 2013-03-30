@@ -11,14 +11,7 @@ define([
     'use strict';
 
     var ComponentMatchingFamily = Family.extend({
-        nodeClass: null,
-        engine: null,
-        nodes: null,
-        entities: null,
-        components: null,
-        nodePool: null,
-
-        init: function (nodeClass, engine) {
+        constructor: function (nodeClass, engine) {
             this.nodeClass = nodeClass;
             this.engine = engine;
             this.__defineGetter__("nodeList", function() {

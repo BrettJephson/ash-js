@@ -9,15 +9,21 @@ define ([
 
     // prepare Mock components
     var MockComponent = Class.extend({
-        value: 0
+        constructor: function () {
+            this.value = 0;
+        }
     });
 
     var MockComponent2 = Class.extend({
-        value: ''
+        constructor: function () {
+            this.value = '';
+        }
     });
 
     var MockComponentExtended = MockComponent.extend({
-        other: 2
+        constructor: function () {
+            this.other = 2;
+        }
     });
 
     var entity;
