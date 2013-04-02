@@ -34,6 +34,8 @@ define([
                     property != "next" &&
                     property != "previous" &&
                     property != "constructor" &&
+                    property != "super" &&
+                    property != "extend" &&
                     property != "entity") {
                     var componentObject = nodeClassPrototype.types[property];
                     this.components.add(componentObject, property);
