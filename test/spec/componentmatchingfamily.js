@@ -15,7 +15,8 @@ define ([
         point: null,
         types: {
             point: Point
-        }
+        },
+        constructor: function () { }
     });
 
     module("Test Component Matching Family", {
