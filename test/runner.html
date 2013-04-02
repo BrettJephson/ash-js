@@ -23,16 +23,13 @@
     <script type="text/javascript">
         QUnit.config.autostart = false;
 
-        //TODO load tests using require
-        /*
-        'spec/system'
-        */
         require([
             'spec/class',
             'spec/entity',
             'spec/nodelist',
             'spec/componentmatchingfamily',
-            'spec/engine'
+            'spec/engine',
+            'spec/system'
         ], function (one) {
             QUnit.start();
         });
