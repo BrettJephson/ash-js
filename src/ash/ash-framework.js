@@ -19,5 +19,10 @@ define(function (require) {
     core.System = require('ash-core/system');
     core.SystemList = require('ash-core/systemlist');
 
+    // util classes
+    // TODO separate this?
+    core.Class = require('brejep/class');
+    core.Signals = require('signals');
+
     return core;
 });

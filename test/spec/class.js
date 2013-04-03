@@ -2,12 +2,12 @@
  * Testing Class inheritance
  */
 define ([
-    'brejep/class'
-], function(Class) {
+    'ash-framework'
+], function(Ash) {
     'use strict';
 
     // base class
-    var Person = Class.extend({
+    var Person = Ash.Class.extend({
         constructor: function (name) {
             this.name = name || 'A person';
         },
@@ -42,7 +42,7 @@ define ([
     module('Test Class inheritance');
 
     test('create a class & an instance', function () {
-        var Test = Class.extend({
+        var Test = Ash.Class.extend({
             name: 'test',
             value: 1,
             constructor: function () { }
@@ -68,7 +68,7 @@ define ([
     });
 
     test('constructors are called', 3, function () {
-        var Test = Class.extend({
+        var Test = Ash.Class.extend({
             constructor: function () {
                 ok(true, 'constructor is called');
             }
@@ -113,7 +113,7 @@ define ([
     });
 
     test('access parent methods', function () {
-        var Mammals = Class.extend({
+        var Mammals = Ash.Class.extend({
             makeSound: function () {
                 return this.name;
             },

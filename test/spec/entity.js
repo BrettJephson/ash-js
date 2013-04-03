@@ -2,19 +2,18 @@
  * Testing Entity
  */
 define ([
-    'ash-framework',
-    'brejep/class'
-], function(Ash, Class) {
+    'ash-framework'
+], function(Ash) {
     'use strict';
 
     // prepare Mock components
-    var MockComponent = Class.extend({
+    var MockComponent = Ash.Class.extend({
         constructor: function () {
             this.value = 0;
         }
     });
 
-    var MockComponent2 = Class.extend({
+    var MockComponent2 = Ash.Class.extend({
         constructor: function () {
             this.value = '';
         }
@@ -124,7 +123,7 @@ define ([
         var callback = function() {
             ok(true, 'added signal is triggered');
             // TODO check the component
-            
+
             start();
         };
         entity.componentAdded.add( callback );
@@ -136,7 +135,7 @@ define ([
         var callback = function() {
             ok(true, 'removed signal is triggered');
             // TODO check the component
-            
+
             start();
         };
         entity.componentRemoved.add(callback);
