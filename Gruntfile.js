@@ -13,7 +13,13 @@ module.exports = function (grunt) {
             }
         },
         qunit: {
-            files: ['test/runner.html']
+            // test using AMD
+            files: ['test/runner.html'],
+
+            // test the build & minified version at build
+            builds: [ 'test/test_build.html', 'test/test_build_min.html',
+                'test/test_build_require.html', 'test/test_build_min_require.html'
+            ]
         },
         uglify: {
             dist: {
@@ -45,8 +51,8 @@ module.exports = function (grunt) {
   }
     });
 
-    grunt.registerTask('test', ['jshint', 'qunit']);
-    grunt.registerTask('default', ['jshint', 'qunit', 'requirejs']);
+    grunt.registerTask('test', ['jshint', 'qunit:files']);
+    grunt.registerTask('default', ['jshint', 'qunit:files', 'requirejs', 'qunit:builds']);
 
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jshint');
