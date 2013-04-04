@@ -29,7 +29,7 @@ requirejs.config({
               // check for amd loader on global namespace
            "  var globalDefine = global.define;\n",
 
-    end:   "  var library = require('ash');\n"+
+    end:   "  var library = require('ash/ash-framework');\n"+
            "  if(typeof module !== 'undefined' && module.exports) {\n"+
                 // export library for node
            "    module.exports = library;\n"+
@@ -40,7 +40,7 @@ requirejs.config({
            "    }(globalDefine));\n"+
            "  } else {\n"+
                 // define library on global namespace for inline script loading
-           "    global['ash'] = library;\n"+
+           "    global['Ash'] = library;\n"+
            "  }\n"+
            "}(this));\n"
   },
