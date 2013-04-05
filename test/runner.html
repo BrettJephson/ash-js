@@ -12,7 +12,10 @@
             'ash-core': '../src/ash/core',
             'ash-framework': '../src/ash/ash-framework',
             'brejep': '../lib/brejep',
-            'signals': '../lib/vendor/signals'
+            'signals': '../lib/vendor/signals',
+
+            'point': 'utils/point',
+            'point3': 'utils/point3'
         }
     }
     </script>
@@ -30,7 +33,7 @@
             'spec/componentmatchingfamily',
             'spec/engine',
             'spec/system'
-        ], function (one) {
+        ], function () {
             QUnit.start();
         });
     </script>
@@ -41,13 +44,5 @@
     <h2 id="qunit-userAgent"></h2>
     <ol id="qunit-tests"></ol>
     <div id="qunit-fixture">test markup</div>
-    <ul>
-        <li><a href="./test_runner.html">All tests</a></li>
-        <li><a href="./test_runner.html?filter=Test Engine">Module: Test Engine</a></li>
-        <li><a href="./test_runner.html?filter=Test Entities">Module: Test Entities</a></li>
-        <li><a href="./test_runner.html?filter=Test System">Module: Test System</a></li>
-        <li><a href="./test_runner.html?filter=Test Nodelist">Module: Test Nodelist</a></li>
-        <li><a href="./test_runner.html?filter=Test Component Matching Family">Module: Test Component Matching Famiy</a></li>
-    </ul>
 </body>
 </html>

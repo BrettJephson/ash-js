@@ -3,8 +3,8 @@
  */
 define ([
     'ash-framework',
-    'brejep/point',
-    'brejep/point3'
+    'point',
+    'point3'
 ], function(Ash, Point, Point3) {
     'use strict';
 
