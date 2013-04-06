@@ -1,41 +1,40 @@
 /**
  * Ash-js Family
  */
-(function( root, factory ) {
-    // We want the object to work with or without AMD
-    if( typeof define === 'function' && define.amd ) {
-        define('ash/family', [], factory );
-    } else {
-        // If not using AMD, references to dependencies must be available on the root object
-        if( typeof root.ash === 'undefined') {
-            root.ash = {};
+define([
+    'brejep/class'
+], function (Class) {
+    'use strict';
+
+    var Family = Class.extend({
+        nodes: null,
+        
+        constructor: function (nodeObject, engine) {
+            this.__defineGetter__("nodeList", function() {
+                return this.nodes;
+            });
+        },
+
+        newEntity: function (entity) {
+            throw new Error( 'should be overriden' );
+        },
+
+        removeEntity: function (entity) {
+            throw new Error( 'should be overriden' );
+        },
+
+        componentAddedToEntity: function (entity, componentClass) {
+            throw new Error( 'should be overriden' );
+        },
+
+        componentRemovedFromEntity: function (entity, componentClass) {
+            throw new Error( 'should be overriden' );
+        },
+
+        cleanUp: function () {
+            throw new Error( 'should be overriden' );
         }
-        root.ash.family = factory();
-    }
-} ( this, function() {
-    "use strict";
-    function Family() {}
-    Family.prototype.nodes = null;
-    Family.prototype.__defineGetter__("nodeList", function() {
-            return this.nodes;
     });
-    Family.prototype.initialise = function( nodeObject, engine ) {
-        throw new Error( 'should be overriden' );
-    };
-    Family.prototype.newEntity = function( entity ) {
-        throw new Error( 'should be overriden' );
-    };
-    Family.prototype.removeEntity = function( entity ) {
-        throw new Error( 'should be overriden' );
-    };
-    Family.prototype.componentAddedToEntity = function( entity, componentClass ) {
-        throw new Error( 'should be overriden' );
-    };
-    Family.prototype.componentRemovedFromEntity = function( entity, componentClass ) {
-        throw new Error( 'should be overriden' );
-    };
-    Family.prototype.cleanUp = function() {
-        throw new Error( 'should be overriden' );    
-    };
+
     return Family;
-}));
+});

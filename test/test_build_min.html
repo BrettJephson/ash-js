@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Ash Framework Test</title>
+    <link rel="stylesheet" href="lib/qunit.css" type="text/css" media="screen">
+    <script type="text/javascript" src="../build/ash.min.js"></script>
+    <script type="text/javascript" src="lib/qunit.js"></script>
+</head>
+
+<body>
+    <script type="text/javascript">
+        test('Ash framework available test', function() {
+            console.log(' Ash version is ' + Ash.VERSION);
+            ok(Ash, 'Ash is available');
+            ok(Ash.VERSION, 'Ash version is available');
+        });
+    </script>
+
+    <h1 id="qunit-header">Minified Build Test Suite</h1>
+    <h2 id="qunit-banner"></h2>
+    <div id="qunit-testrunner-toolbar"></div>
+    <h2 id="qunit-userAgent"></h2>
+    <ol id="qunit-tests"></ol>
+    <div id="qunit-fixture">test markup</div>
+</body>
+</html>
