@@ -1,11 +1,28 @@
-(function(){
-    var engine,
-        family;
+/**
+ * Testing Component Matching Family
+ */
+define ([
+    'ash-framework',
+    'point',
+    'point3'
+], function(Ash, Point, Point3) {
+    'use strict';
+
+    var engine, family;
+
+    // prepare MockNode
+    var MockNode = Ash.Node.extend({
+        point: null,
+        types: {
+            point: Point
+        },
+        constructor: function () { }
+    });
 
     module("Test Component Matching Family", {
         setup: function() {
-            engine = new Engine();
-            family = new ComponentMatchingFamily( MockNode, engine );
+            engine = new Ash.Engine();
+            family = new Ash.ComponentMatchingFamily(MockNode, engine);
         },
         teardown: function() {
             family = null;
@@ -20,14 +37,14 @@
 
     test("matchingEntityIsAddedWhenAccessNodeListFirst", function() {
         var nodes = family.nodeList;
-        var entity = new Entity();
+        var entity = new Ash.Entity();
         entity.add( new Point() );
         family.newEntity( entity );
         strictEqual( nodes.head.entity, entity );
     });
 
     test("matchingEntityIsAddedWhenAccessNodeListSecond", function() {
-        var entity = new Entity();
+        var entity = new Ash.Entity();
         entity.add( new Point() );
         family.newEntity( entity );
         var nodes = family.nodeList;
@@ -35,7 +52,7 @@
     });
 
     test("nodeContainsEntityProperties", function() {
-        var entity = new Entity();
+        var entity = new Ash.Entity();
         var point = new Point();
         entity.add( point );
         family.newEntity( entity );
@@ -45,21 +62,21 @@
 
     test("matchingEntityIsAddedWhenComponentAdded", function() {
         var nodes = family.nodeList;
-        var entity = new Entity();
+        var entity = new Ash.Entity();
         entity.add( new Point() );
         family.componentAddedToEntity( entity, Point );
         strictEqual( nodes.head.entity, entity );
     });
 
     test("nonMatchingEntityIsNotAdded", function() {
-        var entity = new Entity();
+        var entity = new Ash.Entity();
         family.newEntity( entity );
         var nodes = family.nodeList;
         strictEqual( nodes.head, null );
     });
 
     test("nonMatchingEntityIsNotAddedWhenComponentAdded", function() {
-        var entity = new Entity();
+        var entity = new Ash.Entity();
         entity.add( new Point3() );
         family.componentAddedToEntity( entity, Point3 );
         var nodes = family.nodeList;
@@ -67,7 +84,7 @@
     });
 
     test("entityIsRemovedWhenAccessNodeListFirst", function() {
-        var entity = new Entity();
+        var entity = new Ash.Entity();
         entity.add( new Point() );
         family.newEntity( entity );
         var nodes = family.nodeList;
@@ -76,7 +93,7 @@
     });
 
     test("entityIsRemovedWhenAccessNodeListSecond", function() {
-        var entity = new Entity();
+        var entity = new Ash.Entity();
         entity.add( new Point() );
         family.newEntity( entity );
         family.removeEntity( entity );
@@ -85,7 +102,7 @@
     });
 
     test("entityIsRemovedWhenComponentRemoved", function() {
-        var entity = new Entity();
+        var entity = new Ash.Entity();
         entity.add( new Point() );
         family.newEntity( entity );
         entity.remove( Point );
@@ -99,11 +116,11 @@
             i = 0;
         for( i; i < 5; ++i )
         {
-            var entity = new Entity();
+            var entity = new Ash.Entity();
             entity.add( new Point() );
             entities.push( entity );
             family.newEntity( entity );
-            family.newEntity( new Entity() );
+            family.newEntity( new Ash.Entity() );
         }
 
         var nodes = family.nodeList,
@@ -120,11 +137,11 @@
             i = 0;
 
         for( i; i<5; ++i ) {
-            var entity = new Entity();
+            var entity = new Ash.Entity();
             entity.add( new Point() );
             entities.push( entity );
             family.newEntity( entity );
-            family.newEntity( new Entity() );
+            family.newEntity( new Ash.Entity() );
         }
         equal( entities.length, 5 );
         var nodes = family.nodeList,
@@ -133,13 +150,13 @@
         for( node = nodes.head; node; node = node.next )
         {
             var index = entities.indexOf( node.entity );
-            if( index > -1 ) { entities.splice( index, 1 ) }
+            if( index > -1 ) { entities.splice( index, 1 ); }
         }
         equal( entities.length, 0 );
     });
 
     test("cleanUpEmptiesNodeList", function() {
-        var entity = new Entity();
+        var entity = new Ash.Entity();
         entity.add( new Point() );
         family.newEntity( entity );
         var nodes = family.nodeList;
@@ -152,7 +169,7 @@
             i = 0;
 
         for( i; i < 5; ++i ) {
-            var entity = new Entity();
+            var entity = new Ash.Entity();
             entity.add( new Point() );
             entities.push( entity );
             family.newEntity( entity );
@@ -164,11 +181,4 @@
         strictEqual( node.next, null );
     });
 
-    function MockNode() {
-        Object.extend( MockNode.prototype, Node.prototype );
-    }
-    MockNode.prototype.point = null
-    MockNode.prototype.types = {
-        point : Point
-    }
-}());
+});

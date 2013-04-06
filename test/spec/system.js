@@ -1,13 +1,43 @@
-(function() {
+/**
+ * Testing System
+ */
+define ([
+    'ash-framework'
+], function(Ash) {
+    'use strict';
+
     var async,
         asyncCallback,
         engine,
         system1,
         system2;
 
+    // mock system
+    var MockSystem = Ash.System.extend({
+        constructor: function () { },
+
+        addToEngine: function( engine ) {
+            if( typeof asyncCallback == "function" ) {
+                asyncCallback( this, "added", engine );
+            }
+        },
+
+        removeFromEngine: function( engine ) {
+            if( typeof asyncCallback == "function" ) {
+                asyncCallback( this, "removed", engine );
+            }
+        },
+
+        update: function( time ) {
+            if( typeof asyncCallback == "function" ) {
+                asyncCallback( this, "update", time );
+            }
+        }
+    });
+
     module("Test Systems", {
         setup : function() {
-            engine = new Engine();
+            engine = new Ash.Engine();
         },
         teardown : function() {
             engine = null;
@@ -16,12 +46,13 @@
     });
 
     test("systemsGetterReturnsAllTheSystems", function() {
-        var system1 = new System();
+        var system1 = new Ash.System();
         engine.addSystem( system1, 1 );
-        var system2 = new System();
+        var system2 = new Ash.System();
         engine.addSystem( system2, 1 );
         equal( engine.systems.length, 2 );
-        ok( hasItems( engine.systems, [ system1, system2 ] ) );
+        notEqual(engine.systems.indexOf(system1), -1);
+        notEqual(engine.systems.indexOf(system2), -1);
     });
 
     test("addSystemCallsAddToEngine", 2, function() {
@@ -122,26 +153,26 @@
     test("getSystemReturnsTheSystem", function(){
         var system1 = new MockSystem();
         engine.addSystem( system1, 0 );
-        engine.addSystem( new System(), 0 );
+        engine.addSystem( new Ash.System(), 0 );
         strictEqual( engine.getSystem( MockSystem ), system1 );
     });
 
     test("getSystemReturnsNullIfNoSuchSystem", function() {
-        engine.addSystem( new System(), 0 );
+        engine.addSystem( new Ash.System(), 0 );
         strictEqual( engine.getSystem( MockSystem ), null );
     });
 
     test("removeAllSystemsDoesWhatItSays", function() {
-        engine.addSystem( new System(), 0 );
+        engine.addSystem( new Ash.System(), 0 );
         engine.addSystem( new MockSystem(), 0 );
         engine.removeAllSystems();
         strictEqual( engine.getSystem( MockSystem ), null );
-        strictEqual( engine.getSystem( System ), null );
+        strictEqual( engine.getSystem( Ash.System ), null );
     });
 
     test("removeSystemAndAddItAgainDoesNotCauseInvalidLinkedList", function() {
-        var systemB = new System();
-        var systemC = new System();
+        var systemB = new Ash.System();
+        var systemC = new Ash.System();
         engine.addSystem( systemB, 0 );
         engine.addSystem( systemC, 0 );
         engine.removeSystem( systemB );
@@ -186,26 +217,4 @@
     function listensForUpdateComplete( system, action, time ) {
         engine.updateComplete.add(updateComplete);
     }
-
-    function MockSystem() {
-        Object.extend(MockSystem.prototype, System.prototype);
-    }
-    MockSystem.prototype.initialise = function() {
-        return this;
-    };
-    MockSystem.prototype.addToEngine = function( engine ) {
-        if( typeof asyncCallback == "function" ) {
-            asyncCallback( this, "added", engine );
-        }
-    };
-    MockSystem.prototype.removeFromEngine = function( engine ) {
-        if( typeof asyncCallback == "function" ) {
-            asyncCallback( this, "removed", engine );
-        }
-    };
-    MockSystem.prototype.update = function( time ) {
-        if( typeof asyncCallback == "function" ) {
-            asyncCallback( this, "update", time );
-        }
-    };
-}());
+});

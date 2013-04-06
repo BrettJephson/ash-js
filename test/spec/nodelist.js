@@ -1,10 +1,23 @@
-(function(){
-    var nodes,
-        tempNode;
+/**
+ * Testing NodeList
+ */
+define ([
+    'ash-framework'
+], function(Ash) {
+    'use strict';
+
+    var nodes, tempNode;
+
+    // prepare mock node
+    var MockNode = Ash.Node.extend({
+        constructor: function (value) {
+            this.pos = value || 0;
+        }
+    });
 
     module("Test Nodelist", {
         setup: function() {
-            nodes = new NodeList();
+            nodes = new Ash.NodeList();
         },
         teardown: function() {
             nodes = null;
@@ -298,14 +311,4 @@
         }
         return testResult;
     }
-
-    function MockNode( value ) {
-        Object.extend(MockNode.prototype, Node.prototype);
-        value = value || 0;
-        this.initialise( value );
-    }
-    MockNode.prototype.initialise = function( value ) {
-        this.pos = value;
-    }
-    MockNode.prototype.pos = undefined;
-}());
+});

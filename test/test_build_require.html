@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Ash-js Test Build with RequireJS</title>
+    <link rel="stylesheet" href="lib/qunit.css" type="text/css" media="screen">
+    <script src="../lib/vendor/require.min.js"></script>
+    <script type="text/javascript" src="lib/qunit.js"></script>
+</head>
+
+<body>
+    <script type="text/javascript">
+        require(['../build/ash'], function (Ash) {
+            console.log(' Ash version is ' + Ash.VERSION);
+
+            test('Ash framework available test', function() {
+                ok(Ash, 'Ash is available');
+                ok(Ash.VERSION, 'Ash version is available');
+            });
+        });
+    </script>
+
+    <h1 id="qunit-header">Ash framework Build (with RequireJS) Test Suite</h1>
+    <h2 id="qunit-banner"></h2>
+    <div id="qunit-testrunner-toolbar"></div>
+    <h2 id="qunit-userAgent"></h2>
+    <ol id="qunit-tests"></ol>
+    <div id="qunit-fixture">test markup</div>
+</body>
+</html>
