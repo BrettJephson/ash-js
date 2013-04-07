@@ -55,7 +55,7 @@ List of unit test files:
 * *test_build_min_require.html* : test the minified & build version `build/ash.js` with requirejs ( *WIP* )
 
 ## Example on how to use ash-js
-* Ashteroids, a simple asteroids: https://github.com/abiyasa/ashjs-asteroids-example ( *WIP* )
+* Ashteroids, a simple asteroids: https://github.com/brejep/ashjs-asteroids-example
 
 ## License
 MIT License
