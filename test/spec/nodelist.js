@@ -2,16 +2,23 @@
  * Testing NodeList
  */
 define ([
-    'ash-framework'
-], function(Ash) {
+    'ash-framework',
+    'point'
+], function(Ash, Point) {
     'use strict';
 
     var nodes, tempNode;
 
     // prepare mock node
     var MockNode = Ash.Node.extend({
-        constructor: function (value) {
-            this.pos = value || 0;
+        point: null,
+        types: {
+            point: Point
+        },
+        constructor: function (x, y) {
+            x = x || 0;
+            y = y || 0;
+            this.point = new Point(x, y);
         }
     });
 
@@ -198,10 +205,10 @@ define ([
     });
 
     test("insertionSortCorrectlySortsSortedNodes", function() {
-        var node1 = new MockNode( 1 ),
-            node2 = new MockNode( 2 ),
-            node3 = new MockNode( 3 ),
-            node4 = new MockNode( 4 );
+        var node1 = new MockNode(1, 0),
+            node2 = new MockNode(2, 0),
+            node3 = new MockNode(3, 0),
+            node4 = new MockNode(4, 0);
         nodes.add( node1 );
         nodes.add( node2 );
         nodes.add( node3 );
@@ -211,10 +218,10 @@ define ([
     });
 
     test("insertionSortCorrectlySortsReversedNodes", function() {
-        var node1 = new MockNode( 1 ),
-            node2 = new MockNode( 2 ),
-            node3 = new MockNode( 3 ),
-            node4 = new MockNode( 4 );
+        var node1 = new MockNode(1, 0),
+            node2 = new MockNode(2, 0),
+            node3 = new MockNode(3, 0),
+            node4 = new MockNode(4, 0);
         nodes.add( node4 );
         nodes.add( node3 );
         nodes.add( node2 );
@@ -224,11 +231,11 @@ define ([
     });
 
     test("insertionSortCorrectlySortsMixedNodes", function() {
-        var node1 = new MockNode( 1 ),
-            node2 = new MockNode( 2 ),
-            node3 = new MockNode( 3 ),
-            node4 = new MockNode( 4 ),
-            node5 = new MockNode( 5 );
+        var node1 = new MockNode(1, 0),
+            node2 = new MockNode(2, 0),
+            node3 = new MockNode(3, 0),
+            node4 = new MockNode(4, 0),
+            node5 = new MockNode(5, 0);
         nodes.add( node3 );
         nodes.add( node4 );
         nodes.add( node1 );
@@ -239,11 +246,11 @@ define ([
     });
 
     test("insertionSortRetainsTheOrderOfEquivalentNodes", function() {
-        var node1 = new MockNode( 1 ),
-            node2 = new MockNode( 2 ),
-            node3 = new MockNode( 3 ),
-            node4 = new MockNode( 4 ),
-            node5 = new MockNode( 4 );
+        var node1 = new MockNode(1, 0),
+            node2 = new MockNode(2, 0),
+            node3 = new MockNode(3, 0),
+            node4 = new MockNode(4, 0),
+            node5 = new MockNode(4, 0);
         nodes.add( node3 );
         nodes.add( node4 );
         nodes.add( node1 );
@@ -254,10 +261,10 @@ define ([
     });
 
     test("mergeSortCorrectlySortsSortedNodes", function() {
-        var node1 = new MockNode( 1 ),
-            node2 = new MockNode( 2 ),
-            node3 = new MockNode( 3 ),
-            node4 = new MockNode( 4 );
+        var node1 = new MockNode(1, 0),
+            node2 = new MockNode(2, 0),
+            node3 = new MockNode(3, 0),
+            node4 = new MockNode(4, 0);
         nodes.add( node1 );
         nodes.add( node2 );
         nodes.add( node3 );
@@ -267,10 +274,10 @@ define ([
     });
 
     test("mergeSortCorrectlySortsReversedNodes", function() {
-        var node1 = new MockNode( 1 ),
-            node2 = new MockNode( 2 ),
-            node3 = new MockNode( 3 ),
-            node4 = new MockNode( 4 );
+        var node1 = new MockNode(1, 0),
+            node2 = new MockNode(2, 0),
+            node3 = new MockNode(3, 0),
+            node4 = new MockNode(4, 0);
         nodes.add( node4 );
         nodes.add( node3 );
         nodes.add( node2 );
@@ -280,11 +287,11 @@ define ([
     });
 
     test("mergeSortCorrectlySortsMixedNodes", function() {
-        var node1 = new MockNode( 1 ),
-            node2 = new MockNode( 2 ),
-            node3 = new MockNode( 3 ),
-            node4 = new MockNode( 4 ),
-            node5 = new MockNode( 5 );
+        var node1 = new MockNode(1, 0),
+            node2 = new MockNode(2, 0),
+            node3 = new MockNode(3, 0),
+            node4 = new MockNode(4, 0),
+            node5 = new MockNode(5, 0);
         nodes.add( node3 );
         nodes.add( node4 );
         nodes.add( node1 );
@@ -295,7 +302,8 @@ define ([
     });
 
     function sortFunction( node1, node2 ) {
-        return node1.pos - node2.pos;
+        // sort based on x value
+        return node1.point.x - node2.point.x;
     }
 
     function testNodeOrder( nodes, nodeArray ) {

@@ -11,12 +11,8 @@ define ([
     var engine, family;
 
     // prepare MockNode
-    var MockNode = Ash.Node.extend({
-        point: null,
-        types: {
-            point: Point
-        },
-        constructor: function () { }
+    var MockNode = Ash.Node.create({
+        point: Point
     });
 
     module("Test Component Matching Family", {
