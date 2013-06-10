@@ -12,12 +12,25 @@ define ([
     // prepare MockNodes
     var MockNode = Ash.Node.extend({
         point: null,
-        constructor: function () { }
+        types: {
+            point: Point
+        },
+        constructor: function (x, y) {
+            x = x || 0;
+            y = y || 0;
+            this.point = new Point(x, y);
+        }
     });
 
     var MockNode2 = MockNode.extend({
+        point: null,
         matrix: null,
-        constructor: function () { }
+        types: {
+            point: Point
+        },
+        constructor: function () {
+            MockNode.super.constructor.call(this);
+        }
     });
 
     var MockFamily = Ash.Family.extend({
