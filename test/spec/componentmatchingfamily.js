@@ -9,7 +9,7 @@ define ([
     'use strict';
 
     var engine, family;
-
+	
     // prepare MockNode
     var MockNode = Ash.Node.create({
         point: Point
@@ -128,6 +128,30 @@ define ([
         }
     });
 
+	test("nodeListContainsOnlyMatchingEntitiesWhenComponentRemoved", function() {
+		var entity1 = new Ash.Entity();
+		entity1.add( new Point(), Point );
+		
+		var entity2 = new Ash.Entity();
+		entity2.add( new Point() );
+		entity2.add( new Point3() );
+		
+		var entity3 = new Ash.Entity();
+		entity3.add( new Point() );
+		
+		family.newEntity( entity1 );
+		family.newEntity( entity2 );
+		family.newEntity( entity3 );
+		
+		entity1.remove( Point );
+		entity2.remove( Point );
+		
+        var nodes = family.nodeList;
+		console.log( family.nodeList );
+		strictEqual( nodes.head.entity, entity3 );
+		strictEqual( nodes.tail.entity, entity3 );
+	});
+	
     test("nodeListContainsAllMatchingEntities", function() {
         var entities = [],
             i = 0;
@@ -176,5 +200,4 @@ define ([
         family.cleanUp();
         strictEqual( node.next, null );
     });
-
 });

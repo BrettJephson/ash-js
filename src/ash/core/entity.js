@@ -20,31 +20,32 @@ define([
             this.componentRemoved = new signals.Signal();
         },
         
-        add: function (component, componentObject) {
-            componentObject = componentObject || component.constructor;
-            componentObject = componentObject.prototype;
-            
-            if ( this.components.has( componentObject ) ) {
-                this.remove( componentObject );
+        add: function (component, componentClass ) {
+			if( typeof componentClass === "undefined" )
+			{
+				componentClass = component.constructor;
+			}
+            if ( this.components.has( componentClass ) ) 
+			{
+                this.remove( componentClass );
             }
-            this.components.add(componentObject, component);
-            this.componentAdded.dispatch( this, componentObject );
+            this.components.add(componentClass, component);
+            this.componentAdded.dispatch( this, componentClass );
             return this;
         },
         
-        remove: function (componentObject) {
-            componentObject = componentObject.prototype;
-            var component = this.components.retrieve( componentObject );
+        remove: function ( componentClass ) {
+            var component = this.components.retrieve( componentClass );
             if ( component ) {
-                this.components.remove( componentObject );
-                this.componentRemoved.dispatch( this, componentObject );
+                this.components.remove( componentClass );
+                this.componentRemoved.dispatch( this, componentClass );
                 return component;
             }
             return null;
         },
         
-        get: function (componentObject) {
-            return this.components.retrieve( componentObject.prototype );
+        get: function (componentClass) {
+            return this.components.retrieve( componentClass );
         },
         
         /**
@@ -59,22 +60,8 @@ define([
             return componentArray;
         },
         
-        has: function (componentObject) {
-            return this.components.has( componentObject.prototype );
-        },
-        
-        clone: function () {
-            var copy = new Entity();
-            this.components.forEach( function( componentObject, component ) {
-                var newComponent = new componentObject.constructor();
-                for( var property in component ) {
-                    if( component.hasOwnProperty( property ) ) {
-                        newComponent[property] = component[property];
-                    }
-                }
-                copy.add( newComponent );
-            } );
-            return copy;
+        has: function (componentClass) {
+            return this.components.has( componentClass );
         }
     });
 

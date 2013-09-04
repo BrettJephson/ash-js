@@ -10,7 +10,7 @@ define([
         entity: null,
         previous: null,
         next: null,
-
+	
         constructor: function () { }
     });
 

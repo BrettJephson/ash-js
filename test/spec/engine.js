@@ -48,11 +48,10 @@ define ([
             this.components = new Dictionary();
             this.nodeObject = nodeObject;
             this.engine = engine;
-            this.nodePool = new Ash.NodePool( nodeObject );
+            this.nodePool = new Ash.NodePool( nodeObject, this.components );
             this.nodePool.dispose( this.nodePool.get() );
             for( var property in nodeObject ) {
                 if(nodeObject.hasOwnProperty(property) &&
-                    property != "types" &&
                     property != "next" &&
                     property != "previous" &&
                     property != "constructor" &&

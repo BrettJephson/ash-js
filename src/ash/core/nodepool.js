@@ -10,9 +10,11 @@ define([
         tail: null,
         cacheTail: null,
         nodeClass: null,
-
-        constructor: function (nodeClass) {
+		components : null,
+		
+        constructor: function (nodeClass, components) {
             this.nodeClass = nodeClass;
+			this.components = components;
         },
 
         get: function() {
@@ -27,6 +29,10 @@ define([
         },
 
         dispose: function( node ) {
+			this.components.forEach(function(componentClass, componentName) {
+				node[componentName] = null;
+			});
+			node.entity = null;
             node.next = null;
             node.previous = this.tail;
             this.tail = node;
@@ -41,9 +47,7 @@ define([
             while( this.cacheTail ) {
                 var node = this.cacheTail;
                 this.cacheTail = node.previous;
-                node.next = null;
-                node.previous = this.tail;
-                this.tail = node;
+                this.dispose( node );
             }
         }
     });

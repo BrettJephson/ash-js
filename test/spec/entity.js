@@ -115,6 +115,7 @@ define ([
         var component = new MockComponent();
         entity.add( component );
         entity.remove( MockComponent );
+		strictEqual( entity.get( MockComponent ), null);
         strictEqual( entity.has( MockComponent ), false );
     });
 
@@ -141,34 +142,5 @@ define ([
         entity.componentRemoved.add(callback);
         entity.add(component);
         entity.remove( MockComponent );
-    });
-
-    test("cloneIsNewReference", function() {
-        var component = new MockComponent();
-        entity.add( component );
-        var clone = entity.clone();
-        ok( clone != entity );
-    });
-
-    test("cloneHasChildComponent", function() {
-        var component = new MockComponent();
-        entity.add( component );
-        var clone = entity.clone();
-        ok( clone.has( MockComponent ) );
-    });
-
-    test("cloneChildComponentIsNewReference", function() {
-        var component = new MockComponent();
-        entity.add( component );
-        var clone = entity.clone();
-        ok( clone.get( MockComponent ) !== entity.get( MockComponent ) );
-    });
-
-    test("cloneChildComponentHasSameProperties", function() {
-        var component = new MockComponent();
-        component.value = 5;
-        entity.add( component );
-        var clone = entity.clone();
-        equal( clone.get( MockComponent ).value, 5 );
     });
 });

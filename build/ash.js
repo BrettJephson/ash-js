@@ -518,9 +518,11 @@ define('ash-core/nodepool',[
         tail: null,
         cacheTail: null,
         nodeClass: null,
-
-        constructor: function (nodeClass) {
+		components : null,
+		
+        constructor: function (nodeClass, components) {
             this.nodeClass = nodeClass;
+			this.components = components;
         },
 
         get: function() {
@@ -535,6 +537,10 @@ define('ash-core/nodepool',[
         },
 
         dispose: function( node ) {
+			this.components.forEach(function(componentClass, componentName) {
+				node[componentName] = null;
+			});
+			node.entity = null;
             node.next = null;
             node.previous = this.tail;
             this.tail = node;
@@ -549,9 +555,7 @@ define('ash-core/nodepool',[
             while( this.cacheTail ) {
                 var node = this.cacheTail;
                 this.cacheTail = node.previous;
-                node.next = null;
-                node.previous = this.tail;
-                this.tail = node;
+                this.dispose( node );
             }
         }
     });
@@ -1301,14 +1305,14 @@ define('ash-core/componentmatchingfamily',[
                 return this.nodes;
             });
 
-            var nodePool = this.nodePool = new NodePool(nodeClass);
             this.nodes = new NodeList();
-            this.entities = new Dictionary();
-            this.components = new Dictionary();
+			this.entities = new Dictionary();
+			this.components = new Dictionary();
+            this.nodePool = new NodePool( this.nodeClass, this.components );
+			
+            this.nodePool.dispose( this.nodePool.get() );
 
-            nodePool.dispose(nodePool.get());
-
-            var nodeClassPrototype = nodeClass.prototype;
+            var nodeClassPrototype = this.nodeClass.prototype;
 
             for(var property in nodeClassPrototype) {
                 ///TODO - tidy this up...
@@ -1686,31 +1690,32 @@ define('ash-core/entity',[
             this.componentRemoved = new signals.Signal();
         },
         
-        add: function (component, componentObject) {
-            componentObject = componentObject || component.constructor;
-            componentObject = componentObject.prototype;
-            
-            if ( this.components.has( componentObject ) ) {
-                this.remove( componentObject );
+        add: function (component, componentClass ) {
+			if( typeof componentClass === "undefined" )
+			{
+				componentClass = component.constructor;
+			}
+            if ( this.components.has( componentClass ) ) 
+			{
+                this.remove( componentClass );
             }
-            this.components.add(componentObject, component);
-            this.componentAdded.dispatch( this, componentObject );
+            this.components.add(componentClass, component);
+            this.componentAdded.dispatch( this, componentClass );
             return this;
         },
         
-        remove: function (componentObject) {
-            componentObject = componentObject.prototype;
-            var component = this.components.retrieve( componentObject );
+        remove: function ( componentClass ) {
+            var component = this.components.retrieve( componentClass );
             if ( component ) {
-                this.components.remove( componentObject );
-                this.componentRemoved.dispatch( this, componentObject );
+                this.components.remove( componentClass );
+                this.componentRemoved.dispatch( this, componentClass );
                 return component;
             }
             return null;
         },
         
-        get: function (componentObject) {
-            return this.components.retrieve( componentObject.prototype );
+        get: function (componentClass) {
+            return this.components.retrieve( componentClass );
         },
         
         /**
@@ -1725,22 +1730,8 @@ define('ash-core/entity',[
             return componentArray;
         },
         
-        has: function (componentObject) {
-            return this.components.has( componentObject.prototype );
-        },
-        
-        clone: function () {
-            var copy = new Entity();
-            this.components.forEach( function( componentObject, component ) {
-                var newComponent = new componentObject.constructor();
-                for( var property in component ) {
-                    if( component.hasOwnProperty( property ) ) {
-                        newComponent[property] = component[property];
-                    }
-                }
-                copy.add( newComponent );
-            } );
-            return copy;
+        has: function (componentClass) {
+            return this.components.has( componentClass );
         }
     });
 
@@ -1759,9 +1750,51 @@ define('ash-core/node',[
         entity: null,
         previous: null,
         next: null,
-        
+	
         constructor: function () { }
     });
+
+    /**
+    * A simpler way to create a node.
+    *
+    * Example: creating a node for component classes Point &amp; energy:
+    *
+    * var PlayerNode = Ash.Node.create({
+    *   point: Point,
+    *   energy: Energy
+    * });
+    *
+    * This is the simpler version from:
+    *
+    * var PlayerNode = Ash.Node.extend({
+    *   point: null,
+    *   energy: null,
+    *
+    *   types: {
+    *     point: Point,
+    *     energy: Energy
+    *   }
+    * });
+    */
+    Node.create = function (schema) {
+        var processedSchema = {
+            types: {},
+            constructor: function () { }
+        };
+
+        // process schema
+        for (var propertyName in schema) {
+            if (schema.hasOwnProperty(propertyName)) {
+                var propertyType = schema[propertyName];
+                if (propertyType) {
+                    processedSchema.types[propertyName] = propertyType;
+                }
+                processedSchema[propertyName] = null;
+            }
+        }
+
+        return Node.extend(processedSchema);
+    };
 
     return Node;
 });
@@ -1808,7 +1841,7 @@ define('ash-core/system',[
  */
 define('ash/ash-framework',['require','ash-core/engine','ash-core/componentmatchingfamily','ash-core/entity','ash-core/entitylist','ash-core/family','ash-core/node','ash-core/nodelist','ash-core/nodepool','ash-core/system','ash-core/systemlist','brejep/class','signals'],function (require) {
     var core = {
-        VERSION: '0.1.0'
+        VERSION: '0.2.0'
     };
 
     core.Engine = require('ash-core/engine');

@@ -18,14 +18,14 @@ define([
                 return this.nodes;
             });
 
-            var nodePool = this.nodePool = new NodePool(nodeClass);
             this.nodes = new NodeList();
-            this.entities = new Dictionary();
-            this.components = new Dictionary();
+			this.entities = new Dictionary();
+			this.components = new Dictionary();
+            this.nodePool = new NodePool( this.nodeClass, this.components );
+			
+            this.nodePool.dispose( this.nodePool.get() );
 
-            nodePool.dispose(nodePool.get());
-
-            var nodeClassPrototype = nodeClass.prototype;
+            var nodeClassPrototype = this.nodeClass.prototype;
 
             for(var property in nodeClassPrototype) {
                 ///TODO - tidy this up...
